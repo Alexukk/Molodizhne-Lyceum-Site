@@ -1,0 +1,178 @@
+{% extends 'base.html' %} {% block title %}Молодіжненський ліцей - Майбутні
+першокласники{% endblock %} {% block head_extra %}
+<style>
+  /* Стилі для секції першокласників */
+  .first-graders-section {
+    background-color: rgba(0, 0, 0, 0.4); /* Напівпрозорий темний фон */
+    border-radius: 10px;
+    padding: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .section-title {
+    color: #00bcd4; /* Акцентний колір для заголовка */
+    margin-bottom: 20px;
+    font-size: 2.2rem;
+    font-weight: 600;
+  }
+
+  .section-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+
+  .document-list {
+    list-style-type: none; /* Удалить стандартные маркеры списка */
+    padding-left: 0; /* Удалить отступ слева */
+    margin-bottom: 30px;
+  }
+
+  .document-list li {
+    background-color: rgba(
+      255,
+      255,
+      255,
+      0.1
+    ); /* Легкий фон для каждого пункта */
+    border-left: 5px solid #ffda00; /* Желтая полоса слева */
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+  }
+
+  .document-list li:hover {
+    transform: translateX(5px); /* Небольшой сдвиг при наведении */
+  }
+
+  .document-note {
+    font-style: italic;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 20px;
+  }
+
+  /* Стилі для кнопок */
+  .btn-action {
+    background-color: #ffda00; /* Желтая кнопка */
+    color: #333; /* Темный текст */
+    border: none;
+    padding: 15px 25px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease,
+      box-shadow 0.3s ease;
+    text-transform: uppercase;
+  }
+
+  .btn-action:hover {
+    background-color: #e6c200; /* Темнее желтый */
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    color: #333; /* Сохраняем темный текст при наведении */
+  }
+
+  .btn-action-secondary {
+    background-color: #00bcd4; /* Голубая кнопка */
+    color: #fff;
+    border: none;
+    padding: 15px 25px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease,
+      box-shadow 0.3s ease;
+    text-transform: uppercase;
+  }
+
+  .btn-action-secondary:hover {
+    background-color: #00a4b8; /* Темнее голубой */
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    color: #fff; /* Сохраняем белый текст при наведении */
+  }
+
+  .button-group .col-md-6 {
+    display: flex; /* Делаем колонку flex-контейнером */
+    justify-content: center; /* Центрируем кнопку внутри колонки */
+  }
+
+  /* Адаптивность */
+  @media (max-width: 767.98px) {
+    .section-title {
+      font-size: 1.8rem;
+    }
+    .section-description,
+    .document-list li,
+    .document-note {
+      font-size: 1rem;
+    }
+    .btn-action,
+    .btn-action-secondary {
+      font-size: 1rem;
+      padding: 12px 20px;
+    }
+    .button-group .col-md-6 {
+      justify-content: center; /* На мобильных кнопка по центру */
+    }
+  }
+</style>
+{% endblock %} {% block content %}
+<main class="main-content">
+  <header class="hero-section">
+    <h1>Майбутні першокласники</h1>
+    <div class="underline"></div>
+  </header>
+
+  <section class="first-graders-section container mt-5">
+    <h2 class="text-center section-title">
+      Шановні батьки майбутніх першокласників!
+    </h2>
+    <p class="text-center section-description">
+      Прийом заяв на зарахування до 1 класу на 2024-2025 навчальний рік
+      здійснюється з березня 2024 року. Документи, необхідні для зарахування:
+    </p>
+    <ol class="document-list">
+      <li>
+        Заява батьків. (ОБОВ'ЯЗКОВО вказати телефон)<br />Завантажити форму
+        заяви по кнопці під текстом.
+      </li>
+      <li>Свідоцтво про народження дитини (копія+оригінал).</li>
+      <li>Медична довідка 086-1/0 (копія або оригінал).</li>
+      <li>Паспорт одного із батьків.</li>
+      <li>
+        Довідка про реєстрацію місця проживання особи (дитини або одного із
+        батьків), або документ, що засвідчує право користування житлом (договір
+        найму/оренди).
+      </li>
+    </ol>
+    <p class="text-center document-note">ЛИСТ МОН № 1/9-227 ВІД 05.04.2019р.</p>
+  </section>
+
+  <section class="container mt-3 mb-5">
+    <div class="row justify-content-center button-group">
+      <div class="col-md-6 col-lg-4">
+        <a
+          href="http://ilschool6.com/wp-content/uploads/2020/04/forma-zayavi-batkiv-1-klas.pdf"
+          class="btn btn-action btn-block"
+          target="_blank"
+          >Завантажити форму заяви</a
+        >
+      </div>
+      <div class="col-md-6 col-lg-4 mt-3 mt-md-0">
+        <a href="/contact" class="btn btn-action-secondary btn-block"
+          >Зв'язатися з нами</a
+        >
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %} {% block scripts %} {% endblock %}

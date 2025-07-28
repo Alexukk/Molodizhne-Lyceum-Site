@@ -1,0 +1,332 @@
+{% extends 'base.html' %} {% block title %}Молодіжненський ліцей - Інформація
+про ліцей{% endblock %} {# Если для этой страницы нужны специфические стили,
+добавь их сюда #} {% block head_extra %}
+<style>
+  /* Общие стили для секций */
+  .main-content {
+    padding-top: 30px;
+    padding-bottom: 60px;
+  }
+
+  .hero-section {
+    position: relative;
+    color: #fff;
+    text-align: center;
+    padding: 80px 0;
+    margin-bottom: 40px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  }
+
+  .hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6); /* Темный оверлей для текста */
+    border-radius: 10px; /* Чтобы оверлей тоже был с закруглениями */
+  }
+
+  .hero-section h1,
+  .hero-section p {
+    position: relative; /* Чтобы текст был над оверлеем */
+    z-index: 2;
+  }
+
+  .hero-section h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    color: #ffda00; /* Желтый цвет для заголовка */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  }
+
+  .hero-section p {
+    font-size: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .underline {
+    width: 80px;
+    height: 4px;
+    background-color: #ffda00; /* Желтая линия */
+    margin: 0 auto 20px;
+  }
+
+  .section-bg {
+    background-color: rgba(
+      0,
+      0,
+      0,
+      0.5
+    ); /* Полупрозрачный черный фон для секций */
+    padding: 30px;
+    border-radius: 10px;
+    color: #fff; /* Белый текст для контраста */
+    margin-bottom: 30px; /* Отступ между секциями */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .section-bg h2 {
+    font-size: 2.5rem;
+    color: #ffda00;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  }
+
+  .section-content p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    text-align: justify;
+  }
+
+  /* Стили для карточек миссии/видения */
+  .mission-vision-card {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    height: 100%; /* Чтобы карточки имели одинаковую высоту */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .mission-vision-card h3 {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 15px;
+  }
+
+  .mission-vision-card p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #ccc;
+  }
+
+  /* Стили для карточек "Почему выбирают нас" */
+  .feature-card {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    height: 100%;
+  }
+
+  .feature-card h4 {
+    font-size: 1.5rem;
+    color: #ffda00;
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+
+  .feature-card p {
+    font-size: 1rem;
+    color: #ccc;
+    line-height: 1.5;
+  }
+
+  /* Адаптивность */
+  @media (max-width: 991.98px) {
+    .hero-section h1 {
+      font-size: 2.8rem;
+    }
+    .hero-section p {
+      font-size: 1.3rem;
+    }
+    .section-bg h2 {
+      font-size: 2rem;
+    }
+    .section-content p {
+      font-size: 1.05rem;
+    }
+    .mission-vision-card h3 {
+      font-size: 1.7rem;
+    }
+    .mission-vision-card p {
+      font-size: 1rem;
+    }
+    .feature-card h4 {
+      font-size: 1.3rem;
+    }
+    .feature-card p {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    .hero-section {
+      padding: 60px 20px;
+    }
+    .hero-section h1 {
+      font-size: 2rem;
+    }
+    .hero-section p {
+      font-size: 1.1rem;
+    }
+    .section-bg {
+      padding: 20px;
+    }
+    .section-bg h2 {
+      font-size: 1.8rem;
+    }
+  }
+</style>
+{% endblock %} {% block content %}
+<main class="container my-5 main-content">
+  <header
+    class="hero-section"
+    style="
+      background-image: url('https://molodezhne-lyceum.ucoz.ua/banner.jpg');
+    "
+  >
+    {# ПРОВЕРЬ ПУТЬ К ИЗОБРАЖЕНИЮ ФОНА #}
+    <h1>Ласкаво просимо до Молодіжненського ліцею!</h1>
+    <p>
+      Офіційний веб-сайт Молодіжненського ліцею, де ви знайдете всю необхідну
+      інформацію про нашу школу, її історію, цінності та події.
+    </p>
+  </header>
+
+  <section class="section-bg">
+    <h2 class="text-center mb-4">Про ліцей</h2>
+    <div class="underline"></div>
+    <div class="section-content">
+      <p>
+        Молодіжненський ліцей – це сучасний навчальний заклад, що надає якісну
+        освіту та сприяє всебічному розвитку учнів. Ми віримо, що кожен учень
+        має унікальний потенціал, і наше завдання – допомогти йому розкрити його
+        повністю.
+      </p>
+      <p>
+        Наш ліцей пишається своїми традиціями, інноваційними методиками навчання
+        та висококваліфікованим педагогічним колективом. Ми створюємо сприятливе
+        та безпечне середовище, де діти можуть навчатися, творити та зростати як
+        особистості.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-bg">
+    <h2 class="text-center mb-4">Наша місія та бачення</h2>
+    <div class="underline"></div>
+    <div class="row">
+      <div class="col-md-6 mb-4">
+        <div class="mission-vision-card">
+          <h3>Місія</h3>
+          <p>
+            Надавати високоякісну освіту, виховуючи відповідальних, креативних
+            та успішних громадян, готових до викликів сучасного світу.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="mission-vision-card">
+          <h3>Бачення</h3>
+          <p>
+            Бути провідним освітнім центром, який надихає на навчання, сприяє
+            інноваціям та формує лідерські якості у кожного учня.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-bg">
+    <h2 class="text-center mb-4">Чому обирають нас?</h2>
+    <div class="underline"></div>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="feature-card">
+          <lord-icon
+            src="https://cdn.lordicon.com/fgmskwad.json"
+            trigger="hover"
+            colors="primary:#ffda00"
+            style="width: 50px; height: 50px"
+          ></lord-icon>
+          <h4>Якісна освіта</h4>
+          <p>
+            Високі стандарти навчання та індивідуальний підхід до кожного учня.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="feature-card">
+          <lord-icon
+            src="https://cdn.lordicon.com/bbtxqqle.json"
+            trigger="hover"
+            colors="primary:#ffda00"
+            style="width: 50px; height: 50px"
+          ></lord-icon>
+          <h4>Досвідчені вчителі</h4>
+          <p>Команда кваліфікованих та відданих своїй справі педагогів.</p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="feature-card">
+          <lord-icon
+            src="https://cdn.lordicon.com/wzwygmpr.json"
+            trigger="hover"
+            colors="primary:#ffda00"
+            style="width: 50px; height: 50px"
+          ></lord-icon>
+          <h4>Сучасні технології</h4>
+          <p>Використання передових освітніх інструментів та ресурсів.</p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="feature-card">
+          <lord-icon
+            src="https://cdn.lordicon.com/ooytngrp.json"
+            trigger="hover"
+            colors="primary:#ffda00"
+            style="width: 50px; height: 50px"
+          ></lord-icon>
+          <h4>Безпечне середовище</h4>
+          <p>
+            Створення комфортних та безпечних умов для навчання та розвитку.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="feature-card">
+          <lord-icon
+            src="https://cdn.lordicon.com/lgsmtfed.json"
+            trigger="hover"
+            colors="primary:#ffda00"
+            style="width: 50px; height: 50px"
+          ></lord-icon>
+          <h4>Позакласна діяльність</h4>
+          <p>
+            Широкий вибір гуртків, секцій та заходів для всебічного розвитку.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="feature-card">
+          <lord-icon
+            src="https://cdn.lordicon.com/jvfkdoqw.json"
+            trigger="hover"
+            colors="primary:#ffda00"
+            style="width: 50px; height: 50px"
+          ></lord-icon>
+          <h4>Спільнота</h4>
+          <p>
+            Дружня атмосфера та співпраця між учнями, батьками та вчителями.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

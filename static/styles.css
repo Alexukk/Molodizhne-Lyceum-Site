@@ -1,0 +1,1254 @@
+/* ===== Базові стилі ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Open Sans", sans-serif; /* Використовуємо Open Sans як основний */
+  /* Зберігаємо ваше фонове зображення */
+  background-image: url("https://sun9-22.userapi.com/impf/c836339/v836339392/a4d1/syEb5d3u38U.jpg?size=2080x1560&quality=96&sign=174b14946d664e081e0ece4fc1b396d6&type=album");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  /* Накладення синього overlay для української теми */
+  background-color: rgba(0, 71, 171, 0.7); /* Темно-синій overlay */
+  background-blend-mode: overlay;
+  color: #ffffff; /* Білий текст для темного фону */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif; /* Шрифт для заголовків */
+  color: #ffda00; /* Яскраво-жовтий для заголовків */
+  font-weight: 700;
+}
+
+p {
+  color: #f8f8f8; /* Світлий сірий для параграфів */
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ===== Навігація (українські кольори) ===== */
+.navbar {
+  background-color: #0047ab !important; /* Темно-синій фон навігації */
+  padding: 10px 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.navbar-brand {
+  color: #ffda00 !important; /* Жовтий для назви бренду */
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.4rem;
+}
+
+.navbar-brand img {
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.navbar-toggler {
+  border-color: rgba(255, 218, 0, 0.5) !important; /* Жовта рамка для тоглера */
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 218, 0, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important; /* Жовті лінії в гамбургер-меню */
+}
+
+.navbar-nav .nav-link {
+  color: #ffffff !important; /* Білі посилання */
+  font-weight: 500;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  padding: 8px 15px;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-item.active .nav-link {
+  color: #ffda00 !important; /* Жовтий при наведенні або активності */
+  text-shadow: 0 0 8px rgba(255, 218, 0, 0.5);
+}
+
+/* ===== Герой-секция (для index.html - українські кольори) ===== */
+.hero-section {
+  background-color: rgba(
+    0,
+    71,
+    171,
+    0.5
+  ); /* Напівпрозорий темно-синій фон для вмісту секції */
+  padding: 60px 20px;
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #ffda00; /* Жовтий */
+}
+
+.hero-section h3 {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  color: #ffffff; /* Білий */
+}
+
+.btn-wrapper {
+  margin-top: 30px;
+}
+
+.hero-section .btn-light {
+  background-color: #ffda00; /* Жовтий */
+  border-color: #ffda00;
+  color: #0047ab !important; /* Темно-синій текст */
+  font-size: 1.2rem;
+  padding: 12px 30px;
+  border-radius: 50px;
+  transition: background-color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.hero-section .btn-light:hover {
+  background-color: #ffe033; /* Світліший жовтий */
+  border-color: #ffe033;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  color: #002d82 !important; /* Темніший синій текст */
+  text-decoration: none;
+}
+
+/* ===== Секция мотивации (для index.html - українські кольори) ===== */
+.motivation-icons {
+  background-color: rgba(0, 71, 171, 0.4); /* Напівпрозорий темно-синій */
+  padding: 60px 0;
+  text-align: center;
+}
+
+.motivation-icons .col-sm-4 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.motivation-icons .icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 15px;
+  filter: none; /* Залишаємо оригінальні кольори іконок або контролюємо через Lordicon */
+  --lordicon-primary: #ffda00; /* Жовті іконки */
+}
+
+.motivation-icons h2 {
+  font-size: 1.5rem;
+  color: #ffda00; /* Жовтий */
+}
+
+/* ===== Блок информации (общий стиль для секций - українські кольори) ===== */
+.section-bg {
+  background-color: rgba(255, 255, 255, 0.05); /* Легкий прозорий білий */
+  padding: 60px 20px;
+  color: #f8f8f8;
+}
+.section-bg-alt {
+  background-color: rgba(0, 71, 171, 0.2); /* Легкий прозорий темно-синій */
+  padding: 60px 20px;
+  color: #f8f8f8;
+}
+
+.info-links h1,
+.school-life h1 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #ffda00; /* Жовтий */
+  text-align: center;
+}
+
+/* ===== Разделительная линия (по умолчанию - українські кольори) ===== */
+.underline {
+  width: 100px;
+  height: 4px;
+  background-color: #ffda00; /* Жовтий */
+  margin: 0 auto 40px auto;
+}
+
+/* .info-box (для index.html - українські кольори) */
+.info-box {
+  background-color: rgba(0, 71, 171, 0.5); /* Напівпрозорий темно-синій */
+  border-radius: 10px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-decoration: none;
+  color: #ffffff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.info-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.info-box lord-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 15px;
+  --lordicon-primary: #ffda00; /* Жовті іконки */
+}
+
+.info-box h4 {
+  font-size: 1.25rem;
+  color: #ffda00; /* Жовтий */
+  margin-bottom: 0;
+}
+
+/* ===== Загальні інформаційні блоки (для do.html та інших - українські кольори) ===== */
+.info-block {
+  background-color: rgba(0, 71, 171, 0.5); /* Напівпрозорий темно-синій */
+  border-radius: 10px;
+  padding: 30px;
+  margin-bottom: 30px;
+  color: #f8f8f8;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-block:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.info-block.reverse-order {
+  flex-direction: row-reverse;
+}
+
+.info-block .info-content {
+  flex: 1;
+  padding: 0 20px;
+}
+
+.info-block .info-img {
+  width: 250px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 3px solid rgba(255, 218, 0, 0.7); /* Жовта рамка */
+}
+
+.info-block h2 {
+  color: #ffda00; /* Жовтий */
+  margin-bottom: 15px;
+  font-size: 2rem;
+}
+
+.info-block p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* ===== Документні картки (для do.html - українські кольори) ===== */
+.document-card {
+  background-color: rgba(0, 71, 171, 0.5); /* Напівпрозорий темно-синій */
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 25px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 350px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #f8f8f8;
+  height: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.document-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.document-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  border: 3px solid rgba(255, 218, 0, 0.7); /* Жовта рамка */
+}
+
+.document-card h2 {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  color: #ffda00; /* Жовтий */
+}
+
+.document-card p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.document-card .document-btn {
+  background-color: #ffda00; /* Жовтий */
+  color: #0047ab !important; /* Темно-синій текст */
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-decoration: none;
+  margin-top: auto;
+}
+
+.document-card .document-btn:hover {
+  background-color: #ffe033; /* Світліший жовтий */
+  transform: translateY(-2px);
+  color: #002d82 !important; /* Темніший синій текст */
+  text-decoration: none;
+}
+
+/* ===== Картки категорій вчителів (для сторінок вчителів - українські кольори) ===== */
+.teacher-category-card {
+  background-color: rgba(0, 71, 171, 0.5); /* Напівпрозорий темно-синій */
+  border-radius: 8px;
+  padding: 25px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #ffffff;
+  height: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.teacher-category-card a {
+  color: inherit;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.teacher-category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.teacher-category-card h2 {
+  font-size: 1.5rem;
+  margin-top: 15px;
+  color: #ffda00; /* Жовтий */
+}
+
+/* Попередження (якщо є - українські кольори) */
+.warning-message {
+  background-color: rgba(255, 218, 0, 0.2); /* Напівпрозорий жовтий */
+  border: 1px solid rgba(255, 218, 0, 0.5); /* Жовта рамка */
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.warning-message p {
+  color: #ffffff;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+/* Забезпечення відступу для основного контенту */
+.main-content {
+  padding-top: 30px;
+  padding-bottom: 60px;
+}
+
+/* ===== Стили для страницы Администрации (do.html - українські кольори) ===== */
+.category-card {
+  background-color: rgba(0, 71, 171, 0.5); /* Напівпрозорий темно-синій */
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 25px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 400px;
+  transition: transform 0.3s ease;
+  color: #f8f8f8;
+  height: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.category-card img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  border: 3px solid rgba(255, 218, 0, 0.7); /* Жовта рамка */
+}
+
+.category-card h1 {
+  font-size: 1.8rem;
+  margin-bottom: 5px;
+  color: #ffda00; /* Жовтий для імен */
+}
+
+.category-card hr {
+  border-top: 2px solid rgba(255, 218, 0, 0.5); /* Жовта лінія */
+  width: 60%;
+  margin: 10px auto;
+}
+
+.category-card h2 {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  line-height: 1.4;
+  color: #ffffff; /* Білий для посад */
+}
+
+/* ===== Стили для страницы Флешмобов (flashmobs.html - українські кольори) ===== */
+.video-post-block {
+  background-color: rgba(0, 71, 171, 0.5); /* Напівпрозорий темно-синій */
+  padding: 30px;
+  border-radius: 8px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.video-post-block:last-of-type {
+  margin-bottom: 0;
+}
+
+.video-post-block .post-title {
+  font-size: 2.2rem;
+  color: #ffda00; /* Жовтий */
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.video-post-block .post-description {
+  font-size: 1.1rem;
+  color: #f8f8f8;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+.video-post-block .post-hr {
+  border-top: 2px solid rgba(255, 255, 255, 0.3);
+  margin: 25px 0;
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  background: #000;
+  border-radius: 5px;
+}
+
+.video-container iframe,
+.video-container object,
+.video-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.sidebar-social {
+  background-color: rgba(0, 71, 171, 0.6); /* Напівпрозорий темно-синій */
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar-social .social-heading {
+  font-size: 1.6rem;
+  color: #ffda00; /* Жовтий */
+  margin-bottom: 20px;
+}
+
+.sidebar-social .social-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.sidebar-social .social-list li {
+  margin-bottom: 15px;
+}
+
+.sidebar-social .social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.3rem;
+  transition: color 0.3s ease;
+}
+
+.sidebar-social .social-link:hover {
+  color: #ffda00; /* Жовтий */
+  text-decoration: none;
+}
+
+.sidebar-social .social-link img {
+  width: 40px;
+  height: 40px;
+  margin-right: 15px;
+  transition: transform 0.3s ease;
+  /* Для lordicon icon, якщо вони використовують SVG, може знадобитися зміна primary color */
+  --lordicon-primary: #ffda00; /* Жовті іконки */
+}
+
+.sidebar-social .social-link:hover img {
+  transform: scale(1.1);
+}
+
+.btn-facebook {
+  /* Якщо ви використовуєте звичайні кнопки, а не lordicon */
+  background-color: #0047ab; /* Темно-синій */
+  color: #ffda00 !important; /* Жовтий текст */
+  padding: 15px 25px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  transition: all 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-facebook:hover {
+  background-color: #002d82; /* Темніший синій */
+  color: #ffe033 !important; /* Світліший жовтий текст */
+  text-decoration: none;
+}
+
+/* ===== Стили для страницы "Майбутні першокласники" (українські кольори) ===== */
+.first-graders-section {
+  background-color: rgba(0, 71, 171, 0.5); /* Напівпрозорий темно-синій */
+  border-radius: 8px;
+  padding: 40px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.first-graders-section .section-title {
+  color: #ffda00; /* Жовтий */
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.first-graders-section .section-description {
+  font-size: 1.2rem;
+  color: #f8f8f8;
+  margin-bottom: 30px;
+  line-height: 1.8;
+}
+
+.first-graders-section .document-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 30px;
+}
+
+.first-graders-section .document-list li {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 15px 20px;
+  margin-bottom: 10px;
+  border-left: 4px solid #ffda00; /* Жовтий акцент */
+  border-radius: 4px;
+  font-size: 1.1rem;
+  color: #ffffff;
+  transition: background-color 0.3s ease;
+}
+
+.first-graders-section .document-list li:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.first-graders-section .document-note {
+  font-size: 0.95rem;
+  color: #cccccc;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+.btn-action {
+  background-color: #ffda00; /* Жовтий */
+  color: #0047ab !important; /* Темно-синій текст */
+  font-size: 1.2rem;
+  padding: 15px 30px;
+  border-radius: 5px;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-action:hover {
+  background-color: #ffe033; /* Світліший жовтий */
+  transform: translateY(-2px);
+  color: #002d82 !important; /* Темніший синій текст */
+  text-decoration: none;
+}
+
+.btn-action-secondary {
+  background-color: #0047ab; /* Темно-синій */
+  color: #ffda00 !important; /* Жовтий текст */
+  font-size: 1.2rem;
+  padding: 15px 30px;
+  border-radius: 5px;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-action-secondary:hover {
+  background-color: #002d82; /* Темніший синій */
+  transform: translateY(-2px);
+  color: #ffe033 !important; /* Світліший жовтий текст */
+  text-decoration: none;
+}
+
+.button-group .col-md-6.mt-3.mt-md-0 {
+  margin-top: 15px !important;
+}
+@media (min-width: 768px) {
+  .button-group .col-md-6.mt-3.mt-md-0 {
+    margin-top: 0 !important;
+  }
+}
+
+/* ===== Специфічні стилі для сторінки Розкладу (scedule.html) - Українські кольори ===== */
+
+main {
+  flex-grow: 1;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.schedule-main-title {
+  font-family: "Montserrat", sans-serif;
+  color: #ffda00; /* Жовтий */
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.schedule-title-underline {
+  width: 120px;
+  height: 5px;
+  background-color: #ffda00; /* Жовтий */
+  margin: 0 auto 50px auto;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(255, 218, 0, 0.7);
+}
+
+.containery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 0 15px;
+}
+
+.column {
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 380px;
+  margin-bottom: 0;
+}
+
+.card {
+  background-color: rgba(0, 71, 171, 0.5); /* Напівпрозорий темно-синій фон */
+  border: 1px solid rgba(255, 218, 0, 0.3); /* Жовта рамка */
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px;
+  text-align: center;
+  color: #ffffff; /* Білий текст на картці */
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+  background-color: rgba(0, 71, 171, 0.65); /* Темніший синій при наведенні */
+}
+
+.card-title {
+  font-family: "Montserrat", sans-serif;
+  color: #ffda00; /* Жовтий заголовок картки */
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  line-height: 1.3;
+  font-weight: 700;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.card .btn-primary {
+  background-color: #ffda00; /* Жовта кнопка */
+  border-color: #ffda00;
+  color: #0047ab !important; /* Темно-синій текст на кнопці */
+  font-weight: 600;
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease;
+  display: inline-block;
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+  text-decoration: none;
+}
+
+.card .btn-primary:hover {
+  background-color: #ffe033; /* Світліший жовтий при наведенні */
+  border-color: #ffe033;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  color: #002d82 !important; /* Темніший синій текст */
+}
+
+/* ===== Футер (українські кольори) ===== */
+.footer {
+  background-color: #0047ab; /* Темно-синій футер */
+  color: #fff;
+  padding: 50px 0;
+  text-align: center;
+  margin-top: auto;
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.footer-heading {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #ffda00; /* Жовті заголовки футера */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+/* Для центрування посилань на мобільних, якщо не justify-content-md-start */
+.footer .col-md-4 .d-flex {
+  justify-content: center;
+}
+@media (min-width: 768px) {
+  .footer .col-md-4 .d-flex {
+    justify-content: flex-start; /* Вирівнювання ліворуч на десктопах */
+  }
+}
+
+.footer a:hover {
+  color: #ffda00; /* Жовтий при наведенні */
+  text-shadow: 0 0 10px rgba(255, 218, 0, 0.7);
+  transform: translateX(5px);
+}
+
+.footer span {
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.footer lord-icon {
+  width: 45px;
+  height: 45px;
+  --lordicon-primary: #ffda00; /* Жовті іконки */
+  filter: drop-shadow(0 0 5px rgba(255, 218, 0, 0.5));
+}
+
+.footer hr {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ===== Lordicon стили (общие) ===== */
+lord-icon {
+  vertical-align: middle;
+}
+
+/* ===== Адаптивні стилі ===== */
+
+@media (min-width: 992px) {
+  .navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 0.8rem;
+    padding-left: 0.8rem;
+  }
+  .hero-section h2 {
+    font-size: 3rem;
+  }
+  .section-bg h2,
+  .school-life h1 {
+    font-size: 2.5rem;
+  }
+  .category-card img {
+    width: 220px;
+    height: 220px;
+  }
+  .category-card h1 {
+    font-size: 2rem;
+  }
+  .category-card h2 {
+    font-size: 1.3rem;
+  }
+  .category-card {
+    min-height: 450px;
+  }
+  .video-post-block .post-title {
+    font-size: 2.5rem;
+  }
+  .video-post-block .post-description {
+    font-size: 1.2rem;
+  }
+  .first-graders-section .section-title {
+    font-size: 3rem;
+  }
+  .first-graders-section .section-description {
+    font-size: 1.3rem;
+  }
+  .first-graders-section .document-list li {
+    font-size: 1.2rem;
+  }
+  .document-card {
+    padding: 30px;
+  }
+  .document-card img {
+    width: 180px;
+    height: 180px;
+  }
+  .document-card h2 {
+    font-size: 1.8rem;
+  }
+  .document-card p {
+    font-size: 1.1rem;
+  }
+  .document-btn {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .hero-section h2 {
+    font-size: 2.2rem;
+  }
+  .section-bg h2,
+  .school-life h1 {
+    font-size: 1.8rem;
+  }
+  .navbar {
+    padding: 10px 15px;
+  }
+  .motivation-icons {
+    justify-content: center;
+  }
+  .motivation-icons .icon {
+    width: 70px;
+    height: 70px;
+  }
+  .category-card img {
+    width: 180px;
+    height: 180px;
+  }
+  .category-card h1 {
+    font-size: 1.6rem;
+  }
+  .category-card h2 {
+    font-size: 1.1rem;
+  }
+  .category-card {
+    min-height: 380px;
+  }
+  .video-post-block .post-title {
+    font-size: 2rem;
+  }
+  .video-post-block .post-description {
+    font-size: 1.1rem;
+  }
+  .sidebar-social {
+    margin-top: 30px;
+  }
+  .first-graders-section .section-title {
+    font-size: 2rem;
+  }
+  .first-graders-section .section-description {
+    font-size: 1.1rem;
+  }
+  .first-graders-section .document-list li {
+    font-size: 1rem;
+  }
+  .btn-action,
+  .btn-action-secondary {
+    font-size: 1.1rem;
+    padding: 12px 25px;
+  }
+  .document-card {
+    padding: 25px;
+  }
+  .document-card img {
+    width: 150px;
+    height: 150px;
+  }
+  .document-card h2 {
+    font-size: 1.6rem;
+  }
+  .document-card p {
+    font-size: 1rem;
+  }
+  .document-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+  .schedule-main-title {
+    font-size: 2.5rem;
+  }
+  .schedule-title-underline {
+    margin-bottom: 40px;
+  }
+  .card-title {
+    font-size: 1.8rem;
+  }
+  .card .btn-primary {
+    font-size: 1.1rem;
+    padding: 12px 25px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  body {
+    background-attachment: scroll;
+    font-size: 0.95rem;
+  }
+
+  .navbar {
+    padding: 8px 10px;
+  }
+
+  .navbar-brand span {
+    font-size: 1.1rem;
+  }
+  .navbar-brand img {
+    margin-right: 5px;
+    width: 25px;
+    height: 25px;
+  }
+
+  .hero-section {
+    padding: 40px 15px;
+  }
+
+  .hero-section h2 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+  }
+  .hero-section h3 {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+
+  .motivation-icons {
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+  }
+
+  .motivation-icons .icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .motivation-icons h2 {
+    font-size: 1.1rem;
+  }
+
+  .section-bg,
+  .section-bg-alt {
+    padding: 40px 15px;
+  }
+
+  .info-links h1,
+  .school-life h1 {
+    font-size: 1.5rem;
+  }
+
+  .footer {
+    padding: 30px 15px;
+  }
+
+  .footer-heading {
+    font-size: 1.3rem;
+  }
+
+  .footer a {
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+  .footer a:last-child {
+    margin-bottom: 0;
+  }
+  .footer span {
+    font-size: 0.9rem;
+  }
+  .footer lord-icon {
+    width: 35px;
+    height: 35px;
+  }
+
+  .category-card {
+    min-height: auto;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  .category-card img {
+    width: 150px;
+    height: 150px;
+  }
+  .category-card h1 {
+    font-size: 1.4rem;
+  }
+  .category-card h2 {
+    font-size: 1rem;
+  }
+
+  .video-post-block {
+    padding: 20px;
+    margin-bottom: 30px;
+  }
+  .video-post-block .post-title {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+  .video-post-block .post-description {
+    font-size: 1rem;
+    text-align: left;
+  }
+  .sidebar-social {
+    margin-top: 30px;
+    padding: 15px;
+  }
+  .sidebar-social .social-heading {
+    font-size: 1.4rem;
+  }
+  .sidebar-social .social-link {
+    font-size: 1.1rem;
+  }
+  .sidebar-social .social-link img {
+    width: 30px;
+    height: 30px;
+  }
+  .btn-facebook {
+    font-size: 16px;
+    padding: 12px 20px;
+  }
+
+  .first-graders-section {
+    padding: 25px;
+  }
+  .first-graders-section .section-title {
+    font-size: 1.8rem;
+  }
+  .first-graders-section .section-description {
+    font-size: 1rem;
+  }
+  .first-graders-section .document-list li {
+    font-size: 0.95rem;
+    padding: 12px 15px;
+  }
+  .btn-action,
+  .btn-action-secondary {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+  .document-card {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .document-card img {
+    width: 120px;
+    height: 120px;
+  }
+  .document-card h2 {
+    font-size: 1.4rem;
+  }
+  .document-card p {
+    font-size: 0.95rem;
+  }
+  .document-btn {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+
+  .schedule-main-title {
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
+  .schedule-title-underline {
+    margin-bottom: 30px;
+    width: 80px;
+  }
+  .containery {
+    gap: 20px;
+  }
+  .column {
+    max-width: 320px;
+  }
+  .card {
+    padding: 20px;
+    border-radius: 12px;
+  }
+  .card-title {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+  }
+  .card .btn-primary {
+    font-size: 1rem;
+    padding: 10px 20px;
+    max-width: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section h2 {
+    font-size: 1.4rem;
+  }
+  .section-bg h2,
+  .school-life h1 {
+    font-size: 1.3rem;
+  }
+  .category-card img {
+    width: 120px;
+    height: 120px;
+  }
+  .category-card h1 {
+    font-size: 1.2rem;
+  }
+  .category-card h2 {
+    font-size: 0.95rem;
+  }
+  .category-card {
+    margin-bottom: 15px;
+  }
+  .video-post-block .post-title {
+    font-size: 1.5rem;
+  }
+  .video-post-block .post-description {
+    font-size: 0.9rem;
+  }
+  .sidebar-social .social-heading {
+    font-size: 1.2rem;
+  }
+  .sidebar-social .social-link {
+    font-size: 1rem;
+  }
+  .sidebar-social .social-link img {
+    width: 25px;
+    height: 25px;
+  }
+  .btn-facebook {
+    font-size: 14px;
+    padding: 10px 15px;
+  }
+  .first-graders-section {
+    padding: 20px;
+  }
+  .first-graders-section .section-title {
+    font-size: 1.5rem;
+  }
+  .first-graders-section .section-description {
+    font-size: 0.9rem;
+  }
+  .first-graders-section .document-list li {
+    font-size: 0.85rem;
+    padding: 10px 12px;
+  }
+  .btn-action,
+  .btn-action-secondary {
+    font-size: 0.9rem;
+    padding: 8px 15px;
+  }
+  .document-card img {
+    width: 100px;
+    height: 100px;
+  }
+  .document-card h2 {
+    font-size: 1.2rem;
+  }
+  .document-card p {
+    font-size: 0.85rem;
+  }
+}

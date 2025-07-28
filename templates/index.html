@@ -1,0 +1,167 @@
+{% extends 'base.html' %} {% block title %}Головна - Молодіжненський ліцей{%
+endblock %} {% block head_extra %}{% endblock %} {% block content %}
+<header class="hero-section text-center text-white">
+  <div class="container">
+    <h2>
+      Молодіжненський ліцей Великодолинської селищної ради <br />
+      Одеського району Одеської області
+    </h2>
+    <h3>Навчальний заклад I - III рівнів освіти</h3>
+    <div class="btn-wrapper my-4">
+      {# Прямая ссылка на страницу контактов #}
+      <a href="/contact" class="btn btn-light btn-lg"
+        >Зв'язатися з адміністрацією</a
+      >
+    </div>
+  </div>
+</header>
+
+<section class="motivation-icons py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-sm-4 text-center">
+        {# Прямой путь к изображению в static/ #}
+        <img
+          src="/static/299054_bulb_light_icon.png"
+          alt="Розумій"
+          class="icon"
+        />
+        <h2>Розумій</h2>
+      </div>
+      <div class="col-sm-4 text-center">
+        {# Прямой путь к изображению в static/ #}
+        <img
+          src="/static/4698594_configuration_gear_options_settings_setup_icon.png"
+          alt="Розв'язуй"
+          class="icon"
+        />
+        <h2>Розв'язуй</h2>
+      </div>
+      <div class="col-sm-4 text-center">
+        {# Прямой путь к изображению в static/ #}
+        <img
+          src="/static/416372_champion_cup_sports_winner_icon.png"
+          alt="Перемагай!"
+          class="icon"
+        />
+        <h2>Перемагай!</h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="info-links section-bg">
+  <div class="container text-center">
+    <h1>Інформація</h1>
+    <hr class="underline" />
+    <div class="row justify-content-center">
+      <div class="col-6 col-md-4 mb-4">
+        {# Прямая ссылка на страницу расписания #}
+        <a href="/scedule" class="info-box">
+          <lord-icon
+            src="https://cdn.lordicon.com/lzgqzxrq.json"
+            trigger="hover"
+          ></lord-icon>
+          <h4>Розклад</h4>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 mb-4">
+        {# Прямая ссылка на страницу поступления #}
+        <a href="/admission" class="info-box">
+          <lord-icon
+            src="https://cdn.lordicon.com/ntultglr.json"
+            trigger="hover"
+          ></lord-icon>
+          <h4>Вступ до ліцею</h4>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 mb-4">
+        {# Прямая ссылка на страницу информации #}
+        <a href="/info" class="info-box">
+          <lord-icon
+            src="https://cdn.lordicon.com/ujxzdfjx.json"
+            trigger="hover"
+          ></lord-icon>
+          <h4>До ознайомлення</h4>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="school-life section-bg-alt">
+  <div class="container text-center">
+    <h1>Життя ліцею</h1>
+    <hr class="underline" />
+    <div class="row justify-content-center">
+      <div class="col-6 col-md-4 mb-4">
+        {# Прямая ссылка на страницу достижений #}
+        <a href="/achievements" class="info-box">
+          <lord-icon
+            src="https://cdn.lordicon.com/jdngjjzg.json"
+            trigger="hover"
+          ></lord-icon>
+          <h4>Досягнення</h4>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 mb-4">
+        {# Прямая ссылка на страницу спортивной жизни #}
+        <a href="/sport-life" class="info-box">
+          <lord-icon
+            src="https://cdn.lordicon.com/omczvsbp.json"
+            trigger="hover"
+          ></lord-icon>
+          <h4>Спортивне життя</h4>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 mb-4">
+        {# Прямая ссылка на страницу флешмобов #}
+        <a href="/flash-mobs" class="info-box">
+          <lord-icon
+            src="https://cdn.lordicon.com/neujejkf.json"
+            trigger="hover"
+          ></lord-icon>
+          <h4>Флешмоби</h4>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="admin-links py-5">
+  <div class="container text-center">
+    <div class="row justify-content-center">
+      <div class="col-6 col-md-4 mb-4">
+        {# Прямая ссылка на страницу администрации #}
+        <a href="/administration" class="info-box">
+          <lord-icon
+            src="https://cdn.lordicon.com/piolrlvu.json"
+            trigger="hover"
+          ></lord-icon>
+          <h4>Адміністрація ліцею</h4>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 mb-4">
+        {# Прямая ссылка на доску объявлений #}
+        <a href="/posts" class="info-box">
+          <lord-icon
+            src="https://cdn.lordicon.com/atidmavy.json"
+            trigger="hover"
+          ></lord-icon>
+          <h4>Дошка оголошень</h4>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 mb-4">
+        {# Прямая ссылка на страницу учителей #}
+        <a href="/teachers" class="info-box">
+          <lord-icon
+            src="https://cdn.lordicon.com/pyarizrk.json"
+            trigger="hover"
+          ></lord-icon>
+          <h4>Вчителі</h4>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %} {% block body_extra %}{% endblock %}

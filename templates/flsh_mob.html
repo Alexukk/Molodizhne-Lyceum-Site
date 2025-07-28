@@ -1,0 +1,339 @@
+{% extends 'base.html' %} {% block title %}Молодіжненський ліцей - Флешмоби{%
+endblock %} {% block head_extra %}
+<style>
+  /* Общие стили для секций постов */
+  .main-content {
+    padding-top: 30px;
+    padding-bottom: 60px;
+  }
+
+  .hero-section {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .hero-section h1 {
+    font-size: 2.8rem;
+    color: #ffda00; /* Желтый цвет для заголовка */
+    margin-bottom: 10px;
+  }
+
+  .underline {
+    width: 80px;
+    height: 4px;
+    background-color: #ffda00; /* Желтая линия */
+    margin: 0 auto 20px;
+  }
+
+  .section-bg {
+    background-color: rgba(
+      0,
+      0,
+      0,
+      0.5
+    ); /* Полупрозрачный черный фон для секций */
+    padding: 30px;
+    border-radius: 10px;
+    color: #fff; /* Белый текст для контраста */
+  }
+
+  /* Стили для блоков видео-постов */
+  .video-post-block {
+    margin-bottom: 50px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Разделитель между постами */
+  }
+
+  .video-post-block:last-of-type {
+    border-bottom: none; /* Убрать разделитель у последнего поста */
+  }
+
+  .post-title {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 15px;
+    text-align: center; /* Центрируем заголовок */
+  }
+
+  .post-hr {
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    width: 50%;
+    margin: 20px auto;
+  }
+
+  .video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    background: #000;
+    margin-bottom: 20px;
+  }
+
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .post-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: justify;
+  }
+
+  /* Стили для боковой панели социальных сетей */
+  .sidebar-social {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .social-heading {
+    font-size: 1.7rem;
+    color: #ffda00;
+    margin-bottom: 20px;
+  }
+
+  .social-list {
+    padding: 0;
+    list-style: none;
+    width: 100%;
+  }
+
+  .social-list li {
+    margin-bottom: 15px;
+  }
+
+  .social-list li:last-child {
+    margin-bottom: 0;
+  }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.3rem;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+
+  .social-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .social-link img {
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+  }
+
+  /* Стиль для кнопки Facebook внизу страницы */
+  .btn-facebook {
+    background-color: #3b5998; /* Цвет Facebook */
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.3rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-facebook:hover {
+    background-color: #2d4373;
+    color: #fff;
+  }
+
+  /* Адаптивность */
+  @media (max-width: 991.98px) {
+    .video-post-block .col-lg-8,
+    .video-post-block .col-lg-4 {
+      order: initial; /* Сброс порядка для мобильных */
+    }
+    .sidebar-social {
+      margin-top: 30px; /* Отступ сверху для боковой панели на маленьких экранах */
+    }
+  }
+  @media (max-width: 767.98px) {
+    .hero-section h1 {
+      font-size: 2rem;
+    }
+    .post-title {
+      font-size: 1.5rem;
+    }
+    .post-description {
+      font-size: 1rem;
+    }
+    .social-heading {
+      font-size: 1.4rem;
+    }
+    .social-link {
+      font-size: 1.1rem;
+    }
+    .btn-facebook {
+      font-size: 1.1rem;
+      padding: 10px 20px;
+    }
+  }
+</style>
+{% endblock %} {% block content %}
+<main class="main-content">
+  <header class="hero-section">
+    <h1>Останні Флешмоби</h1>
+    <div class="underline"></div>
+  </header>
+
+  <section class="section-bg">
+    <div class="container">
+      <div class="row mb-5 video-post-block">
+        <div class="col-lg-8 col-md-12">
+          <h2 class="post-title">Акція "За чисте довкілля"</h2>
+          <hr class="post-hr" />
+          <div class="video-container">
+            <iframe
+              src="https://www.facebook.com/plugins/video.php?height=398&href=https%3A%2F%2Fwww.facebook.com%2Fmolodschoolonline%2Fvideos%2F730187519295164%2F&show_text=false&width=560&t=0"
+              allowfullscreen="true"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            ></iframe>
+          </div>
+          <hr class="post-hr" />
+          <p class="post-description">
+            Таким чином, щорічна Всеукраїнська акція "За чисте довкілля" стала
+            хорошою традицією, що відображає активну життєву позицію та бажання
+            не лише говорити, а й піклуватися про поліпшення та чистоту
+            довкілля.
+          </p>
+        </div>
+        <div class="col-lg-4 col-md-12 sidebar-social mt-md-4 mt-lg-0">
+          <h3 class="social-heading">
+            Приєднуйтесь до нас у соціальних мережах:
+          </h3>
+          <ul class="list-unstyled social-list">
+            <li>
+              <a
+                href="https://www.facebook.com/molodschoolonline/?fref=ts"
+                target="_blank"
+                class="social-link"
+              >
+                <img
+                  src="/static/317727_facebook_social media_social_icon (1).png"
+                  {#
+                  ИСПРАВЛЕН
+                  ПУТЬ
+                  #}
+                  alt="Facebook"
+                />
+                Facebook
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.tiktok.com/@molodschool?_t=8iwpkFzUXtm"
+                target="_blank"
+                class="social-link"
+              >
+                <img
+                  src="/static/5584541_shubhambhatia_social media_thevectorframe_tik tok_tiktok_icon.png"
+                  {#
+                  ИСПРАВЛЕН
+                  ПУТЬ
+                  #}
+                  alt="Tik Tok"
+                />
+                Tik Tok
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row mb-5 video-post-block">
+        <div class="col-lg-8 col-md-12">
+          <h2 class="post-title">Освітні Години</h2>
+          <hr class="post-hr" />
+          <div class="video-container">
+            <iframe
+              src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fmolodschoolonline%2Fposts%2Fpfbid02NSayQqVAMnwtF8VNPxeMPNWBQBmxXu1ZgDFX99xb9UEbv3Nxy6CFDgqgtQ3xpqzXl&show_text=true&width=500"
+              allowfullscreen="true"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            ></iframe>
+          </div>
+          <hr class="post-hr" />
+          <p class="post-description">
+            Для запобігання, ліквідації причин і умов, що сприяють зникненню
+            дітей, враховуючи нестабільну ситуацію з безпекою в Одеській
+            області, в Молодіжненському ліцеї були проведені освітні години та
+            бесіди з профілактики самогубств та безпритульності!
+          </p>
+        </div>
+      </div>
+
+      <div class="row mb-5 video-post-block">
+        <div class="col-lg-8 col-md-12">
+          <h2 class="post-title">Врятуймо Птахів - Врятуймо Природу!</h2>
+          <hr class="post-hr" />
+          <div class="video-container">
+            <iframe
+              src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Fmolodschoolonline%2Fvideos%2F419123054148190%2F&show_text=false&width=232&t=0"
+              allowfullscreen="true"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            ></iframe>
+          </div>
+          <hr class="post-hr" />
+          <p class="post-description">
+            🌳1 квітня ми відзначаємо Міжнародний День Птахів🐦🕊🦜. В
+            Молодіжненському ліцеї з початкової школи відбувся День Зустрічі з
+            Птахами, де учні з ентузіазмом встановлювали будиночки для птахів,
+            розповідали цікаві факти про птахів, розв'язували загадки. Діти
+            прийшли до висновку, що роль птахів в природі важлива і значуща.
+            🍀Мабуть, не існує людини, яка не захоплюється приємними мелодійними
+            голосами - спів птахів🐦. 🌳Повернення птахів 🐦‍⬛також
+            відзначається як прихід теплої весни🌞🌞🌞. 💁‍♀️Для учнів початкової
+            школи було проведено тематичний урок "День Зустрічі з Птахами"🐦,
+            активні ігри, спостереження за птахами та обговорення їхнього життя
+            і ретельного ставлення до них. 🐦🕊🦜 Птахи - це особливий і
+            дивовижний світ. І збереження цього дива для себе і для майбутніх
+            поколінь - це обов'язок кожного з нас.
+          </p>
+        </div>
+      </div>
+
+      <div class="row justify-content-center video-post-block">
+        <div class="col-lg-8 col-md-12 text-center">
+          <h2 class="post-title">
+            Щоб побачити більше цікавих речей, перейдіть на наш Facebook
+          </h2>
+          <hr class="post-hr" />
+          <div class="video-container mb-4">
+            <iframe
+              src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Fmolodschoolonline%2Fvideos%2F3268090300160252%2F&show_text=false&width=267&t=0"
+              allowfullscreen="true"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            ></iframe>
+          </div>
+          <a
+            href="https://www.facebook.com/molodschoolonline/?fref=ts"
+            class="btn btn-facebook btn-lg"
+            target="_blank"
+            >Перейти на Facebook</a
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

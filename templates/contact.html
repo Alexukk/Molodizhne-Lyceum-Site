@@ -1,0 +1,152 @@
+{% extends 'base.html' %} {% block title %}Молодіжненський ліцей - Контакти{%
+endblock %} {% block head_extra %}
+<style>
+  /* Дополнительные стили для этой страницы, если нужны специфичные */
+  .contact-category {
+    background-color: rgba(
+      0,
+      0,
+      0,
+      0.4
+    ); /* Фоновый цвет для карточек контактов */
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px; /* Отступ между карточками */
+    text-align: center;
+    display: flex; /* Для выравнивания содержимого */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 250px; /* Минимальная высота для единообразия */
+    transition: transform 0.3s ease; /* Анимация при наведении */
+    color: #fff; /* Цвет текста для соответствия общему стилю */
+  }
+
+  .contact-category:hover {
+    transform: translateY(-5px); /* Эффект при наведении */
+    text-decoration: none; /* Убрать подчеркивание при наведении на ссылку */
+    color: #fff;
+  }
+
+  .contact-category img {
+    width: 80px; /* Размер иконок/изображений */
+    height: 80px;
+    margin-bottom: 15px;
+    border-radius: 50%; /* Для круглых иконок, если это подходит */
+    object-fit: cover; /* Чтобы изображения не искажались */
+  }
+
+  .contact-category h2 {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    color: #fff; /* Цвет заголовков */
+  }
+
+  .contact-category h2:last-of-type {
+    /* Для второго H2 в категории "Прийомний день" */
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  .contact-category p {
+    /* Для текста приемного дня */
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+
+  .contact-category hr {
+    border-top: 1px solid rgba(255, 255, 255, 0.5); /* Белая линия */
+    width: 80%;
+    margin: 15px auto;
+  }
+
+  .main-content {
+    padding-top: 30px; /* Отступ сверху для контента */
+    padding-bottom: 60px; /* Отступ снизу перед футером */
+  }
+
+  /* Медиа-запросы для этой страницы */
+  @media (max-width: 767.98px) {
+    .contact-category {
+      min-height: auto; /* Убрать минимальную высоту на мобильных */
+      padding: 15px;
+    }
+    .contact-category img {
+      width: 60px;
+      height: 60px;
+    }
+    .contact-category h2 {
+      font-size: 1.3rem;
+    }
+    .contact-category p {
+      font-size: 1rem;
+    }
+  }
+</style>
+{% endblock %} {% block content %}
+<main class="main-content">
+  <header class="hero-section">
+    <h1>Варіанти зв'язку</h1>
+    <div class="underline"></div>
+  </header>
+
+  <section class="section-bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <a
+            href="https://www.facebook.com/molodschoolonline/?fref=ts"
+            target="_blank"
+            class="contact-category"
+          >
+            <img
+              src="https://store-images.s-microsoft.com/image/apps.37935.9007199266245907.b029bd80-381a-4869-854f-bac6f359c5c9.91f8693c-c75b-4050-a796-63e1314d18c9"
+              alt="Facebook Icon"
+            />
+            <h2>Фейсбук ліцею</h2>
+          </a>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <a href="tel:+380486841803" class="contact-category">
+            <img src="/static/phone.png" alt="Phone Icon" /> {# ИСПРАВЛЕН ПУТЬ
+            #}
+            <h2>Зателефонувати у ліцей</h2>
+          </a>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <a
+            href="mailto:molodezhnenskaya_school@ukr.net"
+            class="contact-category"
+          >
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Email_Shiny_Icon.svg/1024px-Email_Shiny_Icon.svg.png"
+              alt="Email Icon"
+            />
+            <h2>Електронна пошта ліцею</h2>
+          </a>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <div class="contact-category">
+            <h2>
+              Батьківський день у ліцеї проходить по вівторкам <br />
+              з 09:00 по 14:00. <br />
+              Для призначення зустрічі:<br />
+              зателефонуйте або напишіть листа на нашу електронну пошту
+              <br />
+              зустріччі проходять у кабінеті директора <br />
+              який знаходиться на першому поверсі <br />
+              праворуч при вході до ліцею
+            </h2>
+            <hr />
+            <h2>Прийомний день</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

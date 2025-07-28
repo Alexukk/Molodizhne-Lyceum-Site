@@ -1,0 +1,171 @@
+{% extends 'base.html' %} {% block title %}Молодіжненський ліцей - Інформація{%
+endblock %} {% block head_extra %}
+<style>
+  /* Стилі для загальних інформаційних блоків */
+  .info-block {
+    background-color: rgba(0, 0, 0, 0.4); /* Напівпрозорий темний фон */
+    border-radius: 10px;
+    padding: 30px; /* Більший відступ для кращого вигляду */
+    margin-bottom: 30px; /* Отступ между блоками */
+    color: #fff; /* Білий текст */
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .info-block:hover {
+    transform: translateY(-5px); /* Ефект підняття при наведенні */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+
+  .info-block.reverse-order {
+    flex-direction: row-reverse; /* Змінити порядок елементів для чергування */
+  }
+
+  .info-block .info-content {
+    flex: 1; /* Зміст займатиме доступний простір */
+    padding: 0 20px; /* Відступ навколо тексту */
+  }
+
+  .info-block .info-img {
+    width: 250px; /* Фіксована ширина зображення */
+    height: 200px; /* Фіксована висота зображення */
+    object-fit: cover; /* Обрізати, щоб вписатись у розмір */
+    border-radius: 8px;
+    border: 3px solid rgba(255, 255, 255, 0.7);
+  }
+
+  .info-block h2 {
+    color: #00bcd4; /* Акцентний колір для заголовків */
+    margin-bottom: 15px;
+    font-size: 2rem; /* Збільшити розмір заголовка */
+  }
+
+  .info-block p {
+    font-size: 1.1rem; /* Збільшити розмір тексту */
+    line-height: 1.6;
+  }
+
+  /* Адаптивність для мобільних пристроїв */
+  @media (max-width: 767.98px) {
+    .info-block {
+      flex-direction: column; /* Стовпець на мобільних */
+      text-align: center;
+      padding: 20px;
+    }
+
+    .info-block.reverse-order {
+      flex-direction: column; /* Також стовпець на мобільних */
+    }
+
+    .info-block .info-content {
+      padding: 20px 0; /* Відступи зверху/знизу на мобільних */
+    }
+
+    .info-block .info-img {
+      width: 100%; /* Зображення на всю ширину на мобільних */
+      max-width: 280px; /* Обмежити максимальну ширину */
+      height: auto; /* Автоматична висота */
+      margin-bottom: 20px; /* Відступ під зображенням */
+    }
+  }
+</style>
+{% endblock %} {% block content %}
+<main class="main-content">
+  <header class="hero-section">
+    <h1>Важлива Інформація</h1>
+    <div class="underline"></div>
+  </header>
+
+  <section class="section-bg py-5">
+    <div class="container">
+      <div class="info-block">
+        <img
+          src="https://via.placeholder.com/250x200/5e35b1/FFFFFF?text=Про+Ліцей"
+          alt="Зображення 1"
+          class="info-img"
+        />
+        <div class="info-content">
+          <h2>Про Молодіжненський ліцей</h2>
+          <p>
+            Молодіжненський ліцей – це сучасний освітній заклад, який прагне
+            надати учням високоякісну освіту та всебічний розвиток. Ми пишаємося
+            нашими досвідченими викладачами та інноваційними методиками
+            навчання. Наша місія – виховати відповідальних, креативних та
+            успішних громадян.
+          </p>
+          <p>
+            Ми приділяємо велику увагу як академічним знанням, так і розвитку
+            особистих якостей, пропонуючи широкий спектр позакласних заходів та
+            гуртків.
+          </p>
+        </div>
+      </div>
+
+      <div class="info-block reverse-order">
+        <img
+          src="https://via.placeholder.com/250x200/5e35b1/FFFFFF?text=Наша+Місія"
+          alt="Зображення 2"
+          class="info-img"
+        />
+        <div class="info-content">
+          <h2>Наша Місія та Цінності</h2>
+          <p>
+            Наша місія полягає у створенні стимулюючого середовища, де кожен
+            учень може розкрити свій потенціал. Ми цінуємо академічну
+            доброчесність, взаємоповагу, відкритість до нового та активну участь
+            у житті громади.
+          </p>
+          <p>
+            Ліцей сприяє формуванню критичного мислення, навичок співпраці та
+            здатності адаптуватися до змін у сучасному світі.
+          </p>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <img
+          src="https://via.placeholder.com/250x200/5e35b1/FFFFFF?text=Навчальний+Процес"
+          alt="Зображення 3"
+          class="info-img"
+        />
+        <div class="info-content">
+          <h2>Організація Навчального Процесу</h2>
+          <p>
+            Навчальний процес у ліцеї відповідає сучасним освітнім стандартам.
+            Ми використовуємо інтерактивні методи навчання, цифрові технології
+            та індивідуальний підхід до кожного учня.
+          </p>
+          <p>
+            Заняття проводяться в комфортних класах, обладнаних усім необхідним
+            для ефективного навчання. Ми також активно залучаємо учнів до
+            проектної діяльності та досліджень.
+          </p>
+        </div>
+      </div>
+
+      <div class="info-block reverse-order">
+        <img
+          src="https://via.placeholder.com/250x200/5e35b1/FFFFFF?text=Позакласне+Життя"
+          alt="Зображення 4"
+          class="info-img"
+        />
+        <div class="info-content">
+          <h2>Позакласне Життя та Розвиток</h2>
+          <p>
+            Окрім академічної програми, ліцей пропонує різноманітні гуртки та
+            секції: від спортивних до творчих та наукових. Це дає можливість
+            учням розвивати свої інтереси та таланти, а також знаходити нових
+            друзів.
+          </p>
+          <p>
+            Ми віримо, що позакласна діяльність є важливою складовою
+            гармонійного розвитку особистості.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

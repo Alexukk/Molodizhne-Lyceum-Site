@@ -1,0 +1,245 @@
+{% extends 'base.html' %} {% block title %}Молодіжненський ліцей - Досягнення{%
+endblock %} {% block head_extra %}
+<style>
+  /* Общие стили для секций */
+  .achievements-section {
+    background-color: rgba(0, 0, 0, 0.4); /* Полупрозрачный темный фон */
+    border-radius: 10px;
+    padding: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .section-heading {
+    color: #ffda00; /* Желтый цвет для заголовков секций */
+    margin-bottom: 25px;
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .achievement-card {
+    background-color: rgba(
+      255,
+      255,
+      255,
+      0.1
+    ); /* Легкий фон для каждой карточки */
+    border: 1px solid #00bcd4; /* Голубая рамка */
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%; /* Гарантируем одинаковую высоту в flex-контейнере */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .achievement-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .achievement-card h4 {
+    color: #00bcd4; /* Голубой цвет для заголовка карточки */
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .achievement-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    flex-grow: 1; /* Позволяет параграфу занимать доступное пространство */
+  }
+
+  .achievement-card .year {
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 15px;
+    text-align: right;
+  }
+
+  .gallery-item {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .gallery-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 3px solid #ffda00; /* Желтая рамка */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+  }
+
+  .gallery-item img:hover {
+    transform: scale(1.03);
+  }
+
+  .gallery-item p {
+    margin-top: 10px;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Адаптивность */
+  @media (max-width: 767.98px) {
+    .section-heading {
+      font-size: 1.8rem;
+    }
+    .achievement-card h4 {
+      font-size: 1.3rem;
+    }
+    .achievement-card p {
+      font-size: 0.95rem;
+    }
+    .gallery-item p {
+      font-size: 0.85rem;
+    }
+  }
+</style>
+{% endblock %} {% block content %}
+<main class="main-content">
+  <header class="hero-section">
+    <h1>Досягнення Ліцею</h1>
+    <div class="underline"></div>
+  </header>
+
+  <section class="achievements-section container mt-5">
+    <h2 class="section-heading">Наші головні перемоги та здобутки</h2>
+    <p class="text-center mb-5">
+      Молодіжненський ліцей пишається своїми учнями та викладачами, які щороку
+      демонструють високі результати у навчанні, спорті, мистецтві та науковій
+      діяльності. Тут ми зібрали найяскравіші моменти наших успіхів.
+    </p>
+
+    <div class="row">
+      <div class="col-md-6 col-lg-4 d-flex">
+        <div class="achievement-card">
+          <h4>Призові місця на олімпіадах</h4>
+          <p>
+            Наші учні щорічно посідають призові місця на районних та обласних
+            олімпіадах з української мови, математики, історії, біології та
+            фізики, підтверджуючи високий рівень підготовки.
+          </p>
+          <p class="year">2023-2024 навчальний рік</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 d-flex">
+        <div class="achievement-card">
+          <h4>Перемоги у спортивних змаганнях</h4>
+          <p>
+            Шкільні команди з футболу, волейболу та баскетболу регулярно стають
+            чемпіонами районних спартакіад, демонструючи відмінну фізичну
+            підготовку та командний дух.
+          </p>
+          <p class="year">2022-2023 навчальний рік</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 d-flex">
+        <div class="achievement-card">
+          <h4>Участь у наукових конференціях</h4>
+          <p>
+            Учні старших класів активно беруть участь у науково-дослідницьких
+            проектах та представляють свої роботи на всеукраїнських конференціях
+            МАН.
+          </p>
+          <p class="year">Постійно</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 d-flex">
+        <div class="achievement-card">
+          <h4>Мистецькі та творчі конкурси</h4>
+          <p>
+            Талановиті ліцеїсти здобувають нагороди на регіональних та
+            всеукраїнських конкурсах малюнків, пісень та танців, прославляючи
+            наш ліцей.
+          </p>
+          <p class="year">2023 рік</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 d-flex">
+        <div class="achievement-card">
+          <h4>Проекти з екологічного виховання</h4>
+          <p>
+            Ліцей активно впроваджує екологічні ініціативи та здобуває гранти на
+            реалізацію проектів з озеленення та сортування сміття, виховуючи
+            відповідальних громадян.
+          </p>
+          <p class="year">2021-2022 роки</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 d-flex">
+        <div class="achievement-card">
+          <h4>Високі показники ЗНО/НМТ</h4>
+          <p>
+            Випускники ліцею демонструють стабільно високі результати на
+            зовнішньому незалежному оцінюванні/національному мультипредметному
+            тесті, успішно вступаючи до провідних ВНЗ України.
+          </p>
+          <p class="year">Щорічно</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="achievements-section container mt-5">
+    <h2 class="section-heading">Фотогалерея наших досягнень</h2>
+    <div class="row">
+      <div class="col-md-4 gallery-item">
+        <img
+          src="/static/images/achievement_olympiad.jpg"
+          alt="Перемога на олімпіаді"
+          class="img-fluid"
+        />
+        <p>Переможці обласної олімпіади з математики</p>
+      </div>
+      <div class="col-md-4 gallery-item">
+        <img
+          src="/static/images/achievement_sport.jpg"
+          alt="Спортивні перемоги"
+          class="img-fluid"
+        />
+        <p>Чемпіони районної спартакіади з волейболу</p>
+      </div>
+      <div class="col-md-4 gallery-item">
+        <img
+          src="/static/images/achievement_art.jpg"
+          alt="Творчі досягнення"
+          class="img-fluid"
+        />
+        <p>Призери конкурсу дитячого малюнка</p>
+      </div>
+      <div class="col-md-4 gallery-item">
+        <img
+          src="/static/images/achievement_man.jpg"
+          alt="Участь у МАН"
+          class="img-fluid"
+        />
+        <p>Учні на захисті робіт МАН</p>
+      </div>
+      <div class="col-md-4 gallery-item">
+        <img
+          src="/static/images/achievement_project.jpg"
+          alt="Екологічний проект"
+          class="img-fluid"
+        />
+        <p>Презентація екологічного проекту ліцею</p>
+      </div>
+      <div class="col-md-4 gallery-item">
+        <img
+          src="/static/images/achievement_graduates.jpg"
+          alt="Випускники"
+          class="img-fluid"
+        />
+        <p>Випускники ліцею, готові до нових звершень</p>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %} {% block scripts %} {% endblock %}

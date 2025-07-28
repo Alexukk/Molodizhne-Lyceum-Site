@@ -1,0 +1,89 @@
+{% extends 'base.html' %} {% block title %}Молодіжненський ліцей - Дошка
+оголошень{% endblock %} {# Если для этой страницы нужны специфические стили,
+добавь их сюда #} {% block head_extra %}
+<style>
+  /* Пример стилей для секции объявлений, если они не в styles.css */
+  .announcements {
+    padding: 30px 0;
+  }
+
+  .card {
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.4); /* Полупрозрачный фон для карточек */
+    color: #fff; /* Белый текст */
+  }
+
+  .card-title {
+    color: #ffda00; /* Желтый цвет для заголовков карточек */
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+  }
+
+  .card-text {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+
+  .card-img-top {
+    width: 100%;
+    height: 200px; /* Фиксированная высота для изображений */
+    object-fit: cover; /* Обрезка изображения, чтобы оно заполняло область */
+  }
+  /* Убедись, что .main-content (если используется) и другие общие стили из base.html не конфликтуют */
+</style>
+{% endblock %} {% block content %}
+<main class="container my-5">
+  <section class="announcements">
+    <div class="row">
+      <article class="col-md-6 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Нажаль зараз це не працює</h5>
+            <p class="card-text">Нажаль зараз це не працює</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="col-md-6 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Нажаль зараз це не працює</h5>
+            <p class="card-text">Нажаль зараз це не працює</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="col-md-6 mb-4">
+        <div class="card">
+          <img
+            src="https://itvua.tv/wp-content/uploads/2024/05/image.jpg"
+            class="card-img-top"
+            alt="Оголошення"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Нажаль зараз це не працює</h5>
+            <p class="card-text">Нажаль зараз це не працює</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="col-md-6 mb-4">
+        <div class="card">
+          <img
+            src="https://media.acc.cv.ua/news/article/2018/07/13/34059/n6puS4fHj0QqPescOagz.w575.jpg"
+            class="card-img-top"
+            alt="Оголошення"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Нажаль зараз це не працює</h5>
+            <p class="card-text">Нажаль зараз це не працює</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>
+{% endblock %}
