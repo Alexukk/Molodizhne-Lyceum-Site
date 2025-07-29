@@ -1,6 +1,9 @@
 {% extends 'base.html' %} {% block title %}Молодіжненський ліцей - Дошка
 оголошень{% endblock %} {# Если для этой страницы нужны специфические стили,
 добавь их сюда #} {% block head_extra %}
+{% block script_extra %}
+<script src="{{ url_for('static', filename='posts.js') }}"></script>
+{% endblock %}
 <style>
   /* Пример стилей для секции объявлений, если они не в styles.css */
   .announcements {
@@ -37,52 +40,10 @@
 {% endblock %} {% block content %}
 <main class="container my-5">
   <section class="announcements">
-    <div class="row">
-      <article class="col-md-6 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Нажаль зараз це не працює</h5>
-            <p class="card-text">Нажаль зараз це не працює</p>
-          </div>
-        </div>
-      </article>
+    <div class="row" id="posts_code">
 
-      <article class="col-md-6 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Нажаль зараз це не працює</h5>
-            <p class="card-text">Нажаль зараз це не працює</p>
-          </div>
-        </div>
-      </article>
 
-      <article class="col-md-6 mb-4">
-        <div class="card">
-          <img
-            src="https://itvua.tv/wp-content/uploads/2024/05/image.jpg"
-            class="card-img-top"
-            alt="Оголошення"
-          />
-          <div class="card-body">
-            <h5 class="card-title">Нажаль зараз це не працює</h5>
-            <p class="card-text">Нажаль зараз це не працює</p>
-          </div>
-        </div>
-      </article>
 
-      <article class="col-md-6 mb-4">
-        <div class="card">
-          <img
-            src="https://media.acc.cv.ua/news/article/2018/07/13/34059/n6puS4fHj0QqPescOagz.w575.jpg"
-            class="card-img-top"
-            alt="Оголошення"
-          />
-          <div class="card-body">
-            <h5 class="card-title">Нажаль зараз це не працює</h5>
-            <p class="card-text">Нажаль зараз це не працює</p>
-          </div>
-        </div>
-      </article>
     </div>
   </section>
 </main>

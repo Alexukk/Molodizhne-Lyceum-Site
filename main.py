@@ -1,5 +1,6 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, jsonify
 from dotenv import load_dotenv
+from json_storage import load_posts
 load_dotenv()
 
 app = Flask(__name__)
@@ -24,6 +25,13 @@ def info():
 @app.route('/posts')
 def posts():
     return render_template('desk.html')
+
+@app.route('/get-posts-data')
+def posts_sender():
+    data = load_posts()
+    return jsonify(data)
+
+
 
 # Надо создать джсон с администрацией и его отрисовку через fetch на js, добавить путь с инфой про админов
 @app.route('/administration')
