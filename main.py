@@ -52,9 +52,9 @@ def flash_mob():
 def scedule():
     return render_template('scedule.html')
 
-@app.route('/sport-life')
+@app.route('/shelter')
 def sport():
-    return render_template('sportlife.html')
+    return render_template('shelter.html')
 
 @app.route('/achievements') 
 def achievements(): 
