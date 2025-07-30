@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, jsonify
 from dotenv import load_dotenv
 from json_storage import load_posts
+from scedule_updater import scedule_reader
 load_dotenv()
 
 app = Flask(__name__)
@@ -51,6 +52,11 @@ def flash_mob():
 @app.route('/scedule')
 def scedule():
     return render_template('scedule.html')
+
+@app.route('/get-schedule')
+def get_scedule():
+    data = scedule_reader()
+    return jsonify(data)
 
 @app.route('/shelter')
 def sport():

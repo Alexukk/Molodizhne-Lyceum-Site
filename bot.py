@@ -4,23 +4,17 @@ import os
 import dotenv
 import datetime
 from telebot import types
-import logging  # Импортируем модуль logging
+import logging
 
 # Импортируем все необходимые функции из вашего json_storage.py
 from json_storage import load_posts, save_post, delete_post_by_id
+from scedule_updater import scedule_updater
 
 # Настройка логирования
 logging.basicConfig(
-    level=logging.INFO,  # Уровень логирования: INFO, DEBUG, WARNING, ERROR, CRITICAL
+    level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    # handlers=[
-    #     logging.FileHandler("bot.log"), # Запись логов в файл
-    #     logging.StreamHandler()         # Вывод логов в консоль
-    # ]
 )
-# Если вы хотите логировать только в консоль, закомментируйте FileHandler
-# Если вы хотите логировать только в файл, закомментируйте StreamHandler
-# В текущей конфигурации логи будет выводиться только в консоль (по умолчанию для StreamHandler)
 logger = logging.getLogger(__name__)
 
 # Загрузка переменных окружения из .env файла
@@ -48,12 +42,10 @@ Post = {}
 # Создание главного меню (ReplyKeyboardMarkup)
 menu = types.ReplyKeyboardMarkup(resize_keyboard=True)
 btn1 = types.KeyboardButton('/AddPost')
-btn2 = types.KeyboardButton('/AddFlashmob')
 btn3 = types.KeyboardButton('/DeletePost')
-btn4 = types.KeyboardButton('/DeleteFlashmob')
-btn5 = types.KeyboardButton('/Change-scedule')
+btn5 = types.KeyboardButton('/ChangeSchedule')
 btn6 = types.KeyboardButton('/Instruction')
-menu.add(btn1, btn2, btn3, btn4, btn5, btn6)
+menu.add(btn1, btn3, btn5, btn6)
 
 # Создание объекта для скрытия Reply-клавиатуры
 hide_menu = types.ReplyKeyboardRemove()
@@ -65,10 +57,6 @@ delete_management_menu.add(types.KeyboardButton('DELETE_POST'))
 
 
 def checker(user_id):
-    """
-    Проверяет, имеет ли пользователь доступ к боту.
-    Отправляет сообщение об отказе в доступе, если ID не в списке админов.
-    """
     if user_id not in admins:
         logger.warning(f"Unauthorized access attempt by user ID: {user_id}")
         bot.send_message(user_id, "Ви не маєте доступу до цього боту.", reply_markup=hide_menu)
@@ -98,10 +86,8 @@ def Instruction(message):
         return
     text = "Тут буде інструкція по використанню:\n" \
            "/AddPost - додати новий пост на сайт.\n" \
-           "/AddFlashmob - додати інформацію про флешмоб.\n" \
            "/DeletePost - видалити пост.\n" \
-           "/DeleteFlashmob - видалити флешмоб.\n" \
-           "/Change-scedule - змінити розклад.\n"
+           "/ChangeSchedule - змінити розклад.\n"
     bot.send_message(user_id, text, reply_markup=menu)
 
 
@@ -155,7 +141,7 @@ def verifying_post(message):
     bot.send_message(user_id, f"Заголовок: {Post['title']}\n"
                               f"Текст: {Post['text']}\n"
                               f"----------------------| {Post['Date']}\n"
-                              f"ID: <code>{Post['id']}</code>",  # Используем <code> для моноширинного шрифта
+                              f"ID: <code>{Post['id']}</code>",
                      reply_markup=confirm_post_menu,
                      parse_mode='HTML')
 
@@ -200,8 +186,6 @@ def show_posts_for_deletion(message):
 
     bot.send_message(user_id, "Оберіть пост для видалення (натисніть на його ID, щоб скопіювати):",
                      reply_markup=hide_menu)
-    # Можно убрать time.sleep(5) - это может замедлить бота и обычно не нужно
-    # time.sleep(5) # Эта задержка может быть не нужна и замедляет бота
 
     for post in posts:
         post_id = post.get('id')
@@ -212,18 +196,17 @@ def show_posts_for_deletion(message):
             user_id,
             f"Заголовок: {post.get('title', 'Без заголовка')}\n"
             f"Дата: {post.get('Date', 'Не вказано')}\n"
-            f"ID: <code>{post_id}</code>\n"  # Используем <code> для удобного копирования
+            f"ID: <code>{post_id}</code>\n"
             f"Текст: {post.get('text', 'Без тексту')[:70]}...",
-            parse_mode='HTML'  # Используем HTML для тега <code>
+            parse_mode='HTML'
         )
 
-    # Отправляем сообщение с инструкцией и кнопками 'Exit' и 'DELETE_POST'
     bot.send_message(user_id, "Коли закінчите перегляд, оберіть одну з опцій у меню нижче:",
                      reply_markup=delete_management_menu)
 
 
 @bot.message_handler(func=lambda message: message.text == 'DELETE_POST')
-def DELETE_POST_command_handler(message):  # Переименовал, чтобы не конфликтовать с show_posts_for_deletion, если вдруг
+def DELETE_POST_command_handler(message):
     user_id = message.chat.id
     logger.info(f"User {user_id} chose to delete a post via DELETE_POST button.")
     if not checker(user_id):
@@ -240,13 +223,11 @@ def posts_deleter(message):
     if not checker(user_id):
         return
 
-    # Проверяем, не является ли введенный текст командой "Exit"
     if message.text == 'Exit':
         logger.info(f"User {user_id} cancelled post deletion.")
         bot.send_message(user_id, "Видалення постів скасовано.", reply_markup=menu)
         return
 
-    # message.text уже является строкой. Используем .strip() для удаления пробелов.
     post_id_to_delete = message.text.strip()
     logger.info(f"Attempting to delete post with ID: '{post_id_to_delete}' for user {user_id}.")
 
@@ -263,7 +244,6 @@ def posts_deleter(message):
                                   f"Можливо, такий ID не знайдено або сталася помилка. Спробуйте ще раз, "
                                   f"ввівши ID або натисніть 'Exit'.",
                          reply_markup=delete_management_menu, parse_mode='HTML')
-        # Если удаление не удалось, снова регистрируем next_step_handler для повторной попытки
         bot.register_next_step_handler(message, posts_deleter)
 
 
@@ -276,9 +256,66 @@ def Exit(message):
         return
 
     global Post
-    Post = {}  # Очищаем состояние текущего поста при выходе из любой пошаговой операции
+    Post = {}
 
     bot.send_message(user_id, "Повертаю у меню.", reply_markup=menu)
+
+@bot.message_handler(commands=['ChangeSchedule'])
+def change_schedule(message):
+    if not checker(message.chat.id):
+        return
+    mrk = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    mrk.add(types.KeyboardButton('Elementary'))
+    mrk.add(types.KeyboardButton('Secondary'))
+    mrk.add(types.KeyboardButton('High'))
+    mrk.add(types.KeyboardButton('Exit'))
+
+    bot.send_message(message.chat.id, f"Оберіть одну з опцій нижче де \n"
+                                      f"Elementary - початкова школа\n"
+                                      f"Secondary - середня школа\n"
+                                      f"High - старша школа", reply_markup=mrk)
+
+
+@bot.message_handler(func=lambda message: message.text == 'Elementary')
+def elementary(message):
+    if not checker(message.chat.id):
+        return
+
+    bot.send_message(message.chat.id, 'Надішліть нове посилання на розклад для початкових класів', reply_markup=types.ReplyKeyboardRemove())
+    bot.register_next_step_handler(message, confirm_elementary)
+
+
+def confirm_elementary(message):
+    text = scedule_updater(message.text, 'Elementary')
+    bot.send_message(message.chat.id, text, reply_markup=menu)
+
+
+@bot.message_handler(func=lambda message: message.text == 'Secondary')
+def secondary(message):
+    if not checker(message.chat.id):
+        return
+
+    bot.send_message(message.chat.id, 'Надішліть нове посилання на розклад для середніх класів', reply_markup=types.ReplyKeyboardRemove())
+    bot.register_next_step_handler(message, confirm_secondary)
+
+
+def confirm_secondary(message):
+    text = scedule_updater(message.text, 'Secondary')
+    bot.send_message(message.chat.id, text, reply_markup=menu)
+
+
+@bot.message_handler(func=lambda message: message.text == 'High')
+def high(message):
+    if not checker(message.chat.id):
+        return
+
+    bot.send_message(message.chat.id, 'Надішліть нове посилання на розклад для старших класів', reply_markup=types.ReplyKeyboardRemove())
+    bot.register_next_step_handler(message, confirm_high)
+
+
+def confirm_high(message):
+    text = scedule_updater(message.text, 'High')
+    bot.send_message(message.chat.id, text, reply_markup=menu)
 
 
 if __name__ == '__main__':

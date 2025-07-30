@@ -1,31 +1,32 @@
-{% extends 'base.html' %} {% block title %}Молодіжненський ліцей - Розклад
-Занять{% endblock %} {% block head_extra %}
-<link
-  href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap"
-  rel="stylesheet"
-/>
+{% extends 'base.html' %}
 
+{% block title %}Розклад Занять - Молодіжненський ліцей{% endblock %}
+
+{% block head_extra %}
 <style>
-  /* Общие стили для main, hero-section, underline и section-bg,
-           если они не являются глобальными в styles.css,
-           иначе удали их отсюда и оставь только специфичные для этой страницы */
-  body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  /*
+    ВАЖЛИВО: Це стилі для заголовка, що знаходиться у вашому навбарі.
+    Для коректної роботи додайте їх у ваш файл styles.css.
+  */
+  @media (max-width: 768px) {
+    .navbar-brand span {
+      font-size: 1.2rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .navbar-brand {
+      max-width: calc(100% - 60px); /* Чтобы оставить место для кнопки-гамбургера */
+    }
   }
 
-  .main-content {
-    flex-grow: 1;
-    padding-top: 50px; /* Отступ сверху, чтобы не перекрывалось навигацией */
-    padding-bottom: 50px;
-  }
-
-  /* Заголовок страницы расписания */
+  /*
+    Стили для карточек. Они адаптированы для Bootstrap
+  */
   .schedule-main-title {
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
-    color: #ffda00; /* Желтый цвет */
+    color: #ffda00;
     text-align: center;
     margin-bottom: 20px;
     font-size: 3rem;
@@ -41,211 +42,110 @@
     border-radius: 3px;
   }
 
-  /* Контейнер для карточек расписания */
-  .containery {
-    display: flex;
-    flex-wrap: wrap; /* Позволяет карточкам переноситься на новую строку */
-    gap: 30px; /* Промежуток между карточками (для BS4 нужно имитировать отступами) */
-    justify-content: center;
-    align-items: stretch; /* Карточки будут иметь одинаковую высоту */
-  }
-
-  .column {
-    flex: 1 1 calc(33.333% - 20px); /* 3 колонки на больших экранах, с учетом margin */
-    min-width: 280px; /* Минимальная ширина карточки */
-    max-width: 350px; /* Максимальная ширина карточки */
-    display: flex; /* Чтобы карточка занимала всю высоту колонки */
-    /* Для имитации gap в BS4: */
-    margin-bottom: 30px; /* Отступ между рядами */
-    padding-left: 15px; /* Для отступа между колонками */
-    padding-right: 15px; /* Для отступа между колонками */
-  }
-  /* Убираем лишние отступы для первого и последнего элемента в ряду */
-  .containery .column:nth-child(3n + 1) {
-    /* Это если 3 колонки в ряд */
-    padding-left: 0;
-  }
-  .containery .column:nth-child(3n + 3) {
-    padding-right: 0;
-  }
-
-  /* Стили для карточек */
-  .card {
-    background-color: rgba(0, 0, 0, 0.7); /* Темный полупрозрачный фон */
+  .custom-card {
+    background-color: rgba(0, 0, 0, 0.7);
     color: #fff;
-    border: 2px solid #ffda00; /* Желтая рамка */
+    border: 2px solid #ffda00;
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
-    width: 100%; /* Карточка занимает всю доступную ширину в колонке */
+    height: 100%;
   }
 
-  .card:hover {
+  .custom-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
   }
 
-  .card-body {
+  .custom-card .card-body {
     padding: 30px;
     text-align: center;
-    flex-grow: 1; /* Позволяет body растягиваться */
-    display: flex; /* Делаем flexbox для внутреннего содержимого */
-    flex-direction: column; /* Элементы внутри будут в столбец */
-    justify-content: space-between; /* Распределяем содержимое по высоте */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
-  .card-title {
+  .custom-card .card-title {
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
     font-size: 2.2rem;
-    color: #ffda00; /* Желтый цвет заголовка карточки */
+    color: #ffda00;
     margin-bottom: 30px;
     line-height: 1.2;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    margin-top: auto; /* Для выравнивания вверх, если justify-content: space-between */
-  }
-
-  .card .btn {
-    background-color: #ffda00; /* Желтая кнопка */
-    border-color: #ffda00;
-    color: #343a40; /* Темный текст на кнопке */
-    font-weight: 600;
-    padding: 12px 25px;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    transition: background-color 0.3s ease, border-color 0.3s ease,
-      color 0.3s ease;
-    width: 100%; /* Кнопка на всю ширину */
-    margin-top: auto; /* Отталкивает кнопку вниз */
-  }
-
-  .card .btn:hover {
-    background-color: #e6c200; /* Чуть темнее желтый при наведении */
-    border-color: #e6c200;
-    color: #343a40;
-  }
-
-  /* Адаптивность */
-  @media (max-width: 992px) {
-    .column {
-      flex: 1 1 calc(50% - 15px); /* 2 колонки на средних экранах */
-    }
-    .containery .column:nth-child(3n + 1),
-    .containery .column:nth-child(3n + 3) {
-      /* Сброс для 3 колонок */
-      padding-left: 15px;
-      padding-right: 15px;
-    }
-    .containery .column:nth-child(2n + 1) {
-      /* Отступы для 2 колонок */
-      padding-left: 0;
-    }
-    .containery .column:nth-child(2n + 2) {
-      padding-right: 0;
-    }
-
-    .schedule-main-title {
-      font-size: 2.5rem;
-    }
-    .card-title {
-      font-size: 1.8rem;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .column {
-      flex: 1 1 100%; /* 1 колонка на мобильных */
-      max-width: 400px; /* Ограничение ширины для мобильных */
-      margin: 0 auto 30px auto; /* Центрирование и отступ снизу */
-      padding-left: 0;
-      padding-right: 0;
-    }
-    .containery .column:nth-child(2n + 1),
-    .containery .column:nth-child(2n + 2) {
-      /* Сброс для 2 колонок */
-      padding-left: 0;
-      padding-right: 0;
-    }
-    .schedule-main-title {
-      font-size: 2rem;
-    }
-    .card-title {
-      font-size: 1.6rem;
-    }
-    .card-body {
-      padding: 25px;
-    }
-    .card .btn {
-      font-size: 1rem;
-      padding: 10px 20px;
-    }
   }
 </style>
-{% endblock %} {% block content %}
-<main class="main-content">
+{% endblock %}
+
+{% block content %}
+<main class="flex-grow-1 py-5">
   <div class="container">
     <h1 class="schedule-main-title">Розклад Занять</h1>
     <hr class="schedule-title-underline" />
 
-    <div class="containery">
-      <div class="column">
-        <div class="card">
+    <div class="row g-4 justify-content-center">
+      <div class="col-lg-4 col-md-6 col-12">
+        <div class="custom-card">
           <div class="card-body">
             <h5 class="card-title">
               Молодші <br />
               класи
             </h5>
             <a
-              href="/static/розклад_молодші_класи.pdf"
+              id="Elementary_code"
+              href="#"
               target="_blank"
               class="btn btn-primary"
-              >Перейти до розкладу</a
             >
-            {# <-- ВСТАВЬ ССЫЛКУ НА ФАЙЛ РАСПИСАНИЯ ДЛЯ МЛАДШИХ КЛАССОВ (PDF,
-            DOCX и т.д.) ЗДЕСЬ #}
+              Перейти до розкладу
+            </a>
           </div>
         </div>
       </div>
-      <div class="column">
-        <div class="card">
+      <div class="col-lg-4 col-md-6 col-12">
+        <div class="custom-card">
           <div class="card-body">
             <h5 class="card-title">
               Середні <br />
               класи
             </h5>
             <a
-              href="/static/розклад_середні_класи.pdf"
+              id="Seconadary_code"
+              href="#"
               target="_blank"
               class="btn btn-primary"
-              >Перейти до розкладу</a
             >
-            {# <-- ВСТАВЬ ССЫЛКУ НА ФАЙЛ РАСПИСАНИЯ ДЛЯ СРЕДНИХ КЛАССОВ (PDF,
-            DOCX и т.д.) ЗДЕСЬ #}
+              Перейти до розкладу
+            </a>
           </div>
         </div>
       </div>
-      <div class="column">
-        <div class="card">
+      <div class="col-lg-4 col-md-6 col-12">
+        <div class="custom-card">
           <div class="card-body">
             <h5 class="card-title">
               Старші <br />
               класи
             </h5>
             <a
-              href="/static/розклад_старші_класи.pdf"
+              id="High_code"
+              href="#"
               target="_blank"
               class="btn btn-primary"
-              >Перейти до розкладу</a
             >
-            {# <-- ВСТАВЬ ССЫЛКУ НА ФАЙЛ РАСПИСАНИЯ ДЛЯ СТАРШИХ КЛАССОВ (PDF,
-            DOCX и т.д.) ЗДЕСЬ #}
+              Перейти до розкладу
+            </a>
           </div>
         </div>
       </div>
     </div>
   </div>
 </main>
+{% endblock %}
+{% block script_extra %}
+<script src="{{ url_for('static', filename='schedule.js') }}"></script>
 {% endblock %}
