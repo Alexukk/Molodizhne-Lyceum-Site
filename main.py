@@ -49,7 +49,7 @@ def flash_mob():
     return render_template('flsh_mob.html')
 
 # тоже можно добавить замену ссылок на розклад через бота и добавить новый путь
-@app.route('/scedule')
+@app.route('/schedule')
 def scedule():
     return render_template('scedule.html')
 
