@@ -1,0 +1,205 @@
+[
+  {
+    "name": "Мелека О. Д.",
+    "subject": "Фізика",
+    "category": "Вища",
+    "experience": "30 років",
+    "photo_path": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/800px-Flag_of_Ukraine.svg.png"
+  },
+  {
+    "name": "Козлова О. К.",
+    "subject": "Хімія, Біологія",
+    "category": "Вища",
+    "experience": "59 років",
+    "photo_path": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/800px-Flag_of_Ukraine.svg.png"
+  },
+  {
+    "name": "Хребтова Н. В.",
+    "subject": "Біологія, Природознавство",
+    "category": "Спеціаліст",
+    "experience": "13 років",
+    "photo_path": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/800px-Flag_of_Ukraine.svg.png"
+  },
+  {
+    "name": "Возняк М. О",
+    "subject": "Хімія, Біологія, Основи здоров'я",
+    "category": "ІІ",
+    "experience": "23 роки",
+    "photo_path": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/800px-Flag_of_Ukraine.svg.png"
+  },
+  {
+    "name": "Бобошко Н. М.",
+    "subject": "Географія",
+    "category": "ІІ",
+    "experience": "28 років",
+    "photo_path": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/800px-Flag_of_Ukraine.svg.png"
+  },
+  {
+    "name": "Семко І. Д.",
+    "subject": "Історія України",
+    "category": "ІІ",
+    "experience": "14 років",
+    "photo_path": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/800px-Flag_of_Ukraine.svg.png"
+  },
+  {
+    "name": "Кравчук Н. В.",
+    "subject": "Психолог",
+    "category": "Вища",
+    "experience": "17 років",
+    "photo_path": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/800px-Flag_of_Ukraine.svg.png"
+  },
+  {
+    "name": "Гикава С. Ю.",
+    "subject": "Вчитель-логопед",
+    "category": "ІІ",
+    "experience": "11 років",
+    "photo_path": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/800px-Flag_of_Ukraine.svg.png"
+  },
+  {
+    "name": "Літовченко О.П.",
+    "subject": "Соціальний педагог",
+    "category": "ІІ",
+    "experience": "23 роки",
+    "photo_path": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/800px-Flag_of_Ukraine.svg.png"
+  },
+  {
+    "name": "Іванова О. С.",
+    "subject": null,
+    "category": null,
+    "experience": null,
+    "photo_path": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/800px-Flag_of_Ukraine.svg.png"
+  },
+  {
+    "name": "Долгашова А. С.",
+    "subject": null,
+    "category": null,
+    "experience": null,
+    "photo_path": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/800px-Flag_of_Ukraine.svg.png"
+  },
+  {
+    "name": "Даракова Л.Г.",
+    "subject": "Вихователь",
+    "category": "Спеціаліст",
+    "experience": "17 років",
+    "photo_path": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/800px-Flag_of_Ukraine.svg.png"
+  },
+  {
+    "name": "Мельник Є.П.",
+    "subject": "Асистент вчителя",
+    "category": null,
+    "experience": "6 років",
+    "photo_path": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/800px-Flag_of_Ukraine.svg.png"
+  },
+  {
+    "name": "Бахмутова В.Г.",
+    "subject": null,
+    "category": null,
+    "experience": null,
+    "photo_path": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/800px-Flag_of_Ukraine.svg.png"
+  },
+  {
+    "name": "Бурдейна Л.П.",
+    "subject": "Вихователь",
+    "category": "спеціаліст",
+    "experience": "22 роки",
+    "photo_path": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/800px-Flag_of_Ukraine.svg.png"
+  },
+  {
+    "name": "Боровська Т.Б.",
+    "subject": "Асистент вчителя",
+    "category": "Спеціаліст",
+    "experience": "24 роки",
+    "photo_path": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/800px-Flag_of_Ukraine.svg.png"
+  },
+  {
+    "name": "Черняшевська Л.М.",
+    "subject": "математика",
+    "category": "вища",
+    "experience": "33 роки",
+    "photo_path": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/800px-Flag_of_Ukraine.svg.png"
+  },
+  {
+    "name": "Гикава О.Д.",
+    "subject": "інформатика, креслення",
+    "category": "Вища",
+    "experience": "30 років",
+    "photo_path": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/800px-Flag_of_Ukraine.svg.png"
+  },
+  {
+    "name": "Дороніна О.А.",
+    "subject": "математика",
+    "category": "Старший учитель",
+    "experience": "33 роки",
+    "photo_path": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/800px-Flag_of_Ukraine.svg.png"
+  },
+  {
+    "name": "Головачова В.М.",
+    "subject": "математика",
+    "category": "вища",
+    "experience": "38 років",
+    "photo_path": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/800px-Flag_of_Ukraine.svg.png"
+  },
+  {
+    "name": "Плітка В.О.",
+    "subject": "інформатика",
+    "category": "спеціаліст",
+    "experience": "8 років",
+    "photo_path": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/800px-Flag_of_Ukraine.svg.png"
+  },
+  {
+    "name": "Волицька О.В.",
+    "subject": "інформатика",
+    "category": "спеціаліст",
+    "experience": "15 років",
+    "photo_path": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/800px-Flag_of_Ukraine.svg.png"
+  },
+  {
+    "name": "Коломієць М.Ф.",
+    "subject": "українознавство, Образотворче мистецтво, етика, основи здоров'я",
+    "category": "Старший учитель",
+    "experience": "35 років",
+    "photo_path": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/800px-Flag_of_Ukraine.svg.png"
+  },
+  {
+    "name": "Цуркан Н.П.",
+    "subject": "фізична культура, МСП",
+    "category": "Вища",
+    "experience": "26 років",
+    "photo_path": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/800px-Flag_of_Ukraine.svg.png"
+  },
+  {
+    "name": "Шевченко А.І.",
+    "subject": "фізична культура",
+    "category": "ІІ",
+    "experience": "5 років",
+    "photo_path": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/800px-Flag_of_Ukraine.svg.png"
+  },
+  {
+    "name": "Бондар Н.М.",
+    "subject": "фізична виховання",
+    "category": "спеціаліст",
+    "experience": "19 років",
+    "photo_path": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/800px-Flag_of_Ukraine.svg.png"
+  },
+  {
+    "name": "Булай М.О",
+    "subject": "трудове навчання",
+    "category": "спеціаліст",
+    "experience": "18 років",
+    "photo_path": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/800px-Flag_of_Ukraine.svg.png"
+  },
+  {
+    "name": "Коровай О.В.",
+    "subject": "музика, мистецтво, астрономія",
+    "category": "ІІ",
+    "experience": "26 років",
+    "photo_path": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/800px-Flag_of_Ukraine.svg.png"
+  },
+  {
+    "name": "Паламарчук Т.В.",
+    "subject": "фізична культура",
+    "category": "спеціаліст",
+    "experience": "5 років",
+    "photo_path": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/800px-Flag_of_Ukraine.svg.png"
+  }
+]

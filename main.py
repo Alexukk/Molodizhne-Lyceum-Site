@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, jsonify
 from dotenv import load_dotenv
 from json_storage import load_posts
 from scedule_updater import scedule_reader
+from teachers import teachers_reader, administration_reader
 load_dotenv()
 
 app = Flask(__name__)
@@ -33,22 +34,24 @@ def posts_sender():
     return jsonify(data)
 
 
-
-# Надо создать джсон с администрацией и его отрисовку через fetch на js, добавить путь с инфой про админов
 @app.route('/administration')
 def admin():
     return render_template('admin.html')
+
+@app.route('/get-administration')
+def get_admins():
+    return administration_reader()
 
 @app.route('/admission')
 def admission():
     return render_template('vstup.html')
 
-# можно добавлять новые посты через бота + новый путь
+
 @app.route('/flash-mobs')
 def flash_mob():
     return render_template('flsh_mob.html')
 
-# тоже можно добавить замену ссылок на розклад через бота и добавить новый путь
+
 @app.route('/schedule')
 def scedule():
     return render_template('scedule.html')
@@ -67,10 +70,13 @@ def achievements():
     return render_template('dosa.html')
 
 
-# полностью переработать страницу с учителями и новый путь для js чтобы отрисовывать учителей 
 @app.route('/teachers')
 def teachers():
     return render_template('/te.html')
+
+@app.route('/get-teachers')
+def teachers_returners():
+    return teachers_reader()
 
 
 if __name__ == '__main__':

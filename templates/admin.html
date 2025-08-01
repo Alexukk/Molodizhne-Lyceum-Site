@@ -1,108 +1,148 @@
-{% extends 'base.html' %} {% block title %}Молодіжненський ліцей -
-Адміністрація{% endblock %} {% block content %}
-<main class="main-content">
-  <header class="hero-section">
-    <h1>Адміністрація ліцею</h1>
-    <div class="underline"></div>
-  </header>
+{% extends 'base.html' %}
 
-  <section class="section-bg">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-sm-12">
-          <div class="category-card">
-            <img
-              src="https://via.placeholder.com/200x200/cccccc/ffffff?text=Фото"
-              alt="Фото Гикава О.Д."
-            />
-            <h1>Гикава Ольга Дмитрівна</h1>
-            <hr />
-            <h2>Директор ліцею</h2>
-          </div>
-        </div>
-        <div class="col-md-6 col-sm-12">
-          <div class="category-card">
-            <img
-              src="https://via.placeholder.com/200x200/cccccc/ffffff?text=Фото"
-              alt="Фото Гонтар Г.П."
-            />
-            <h1>Гонтар Галина Петрівна</h1>
-            <hr />
-            <h2>Заступник директора з освітнього процесу</h2>
-          </div>
-        </div>
-      </div>
-      <hr class="section-divider" />
-      <div class="row">
-        <div class="col-md-6 col-sm-12">
-          <div class="category-card">
-            <img
-              src="https://via.placeholder.com/200x200/cccccc/ffffff?text=Фото"
-              alt="Фото Войтова Т.В."
-            />
-            <h1>Войтова Тетяна Вікторівна</h1>
-            <hr />
-            <h2>Заступник директора з освітнього процесу</h2>
-          </div>
-        </div>
-        <div class="col-md-6 col-sm-12">
-          <div class="category-card">
-            <img
-              src="https://via.placeholder.com/200x200/cccccc/ffffff?text=Фото"
-              alt="Фото Паламарчук Т.В."
-            />
-            <h1>Паламарчук Тетяна Валентинівна</h1>
-            <hr />
-            <h2>Педагог організатор</h2>
-          </div>
-        </div>
-      </div>
-      <hr class="section-divider" />
-      <div class="row">
-        <div class="col-md-6 col-sm-12">
-          <div class="category-card">
-            <img
-              src="https://via.placeholder.com/200x200/cccccc/ffffff?text=Фото"
-              alt="Фото Сухая В.Ю."
-            />
-            <h1>Сухая Вікторія Юріївна</h1>
-            <hr />
-            <h2>Заступник директора з виховної роботи</h2>
-          </div>
-        </div>
-        <div class="col-md-6 col-sm-12">
-          <div class="category-card">
-            <img
-              src="https://via.placeholder.com/200x200/cccccc/ffffff?text=Фото"
-              alt="Фото Левчук С.В."
-            />
-            <h1>Левчук С.В.</h1>
-            <hr />
-            <h2>
-              Бібліотекар<br />
-              Категорія: вища <br />Стаж: 33 роки
-            </h2>
-          </div>
-        </div>
-      </div>
-      <hr class="section-divider" />
+{% block title %}Адміністрація - Молодіжненський ліцей{% endblock %}
 
-      <div class="row justify-content-center">
-        <div class="col-md-6 col-sm-12">
-          <div class="category-card">
-            <img
-              src="https://via.placeholder.com/200x200/cccccc/ffffff?text=Фото"
-              alt="Фото Волицька О.І."
-            />
-            <h1>Волицька О.І.</h1>
-            <hr />
-            <h2>
-              Заступник директора з господарчої частини<br />Стаж: 42 роки
-            </h2>
-          </div>
-        </div>
-      </div>
+{% block head_extra %}
+<link
+  href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap"
+  rel="stylesheet"
+/>
+<style>
+  body {
+    overflow-x: hidden;
+  }
+
+  .administration-page-wrapper {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    font-family: "Open Sans", sans-serif;
+  }
+
+  .administration-main-title {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    color: #ffda00;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 3rem;
+  }
+
+  .administration-title-underline {
+    width: 100px;
+    height: 5px;
+    background-color: #ffda00;
+    margin: 0 auto 50px;
+    border: none;
+  }
+
+  .administration-card {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    border: 2px solid #ffda00;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .administration-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+  }
+
+  .administration-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-bottom: 2px solid #ffda00;
+  }
+
+  .card-content {
+    padding: 20px;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .administration-name {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 1.8rem;
+    color: #ffda00;
+    margin-bottom: 5px;
+  }
+
+  .administration-position, .administration-details {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 0;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<main class="administration-page-wrapper">
+  <div class="container">
+    <h1 class="administration-main-title">Адміністрація ліцею</h1>
+    <hr class="administration-title-underline" />
+    <div id="administration-container" class="row g-4 justify-content-center">
+      <div id="loading-message" class="text-center text-white">Завантаження...</div>
     </div>
-  </section>
+  </div>
 </main>
+{% endblock %}
+
+{% block script_extra %}
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const administrationContainer = document.getElementById('administration-container');
+    const loadingMessage = document.getElementById('loading-message');
+
+    fetch('/get-administration')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(administration => {
+        loadingMessage.remove();
+
+        if (!Array.isArray(administration) || administration.length === 0) {
+          administrationContainer.innerHTML = '<div class="text-center text-white">Дані про адміністрацію відсутні.</div>';
+          return;
+        }
+
+        administration.forEach(member => {
+          const detailsHtml = member.details ? `<p class="administration-details">${member.details.replace(/<br\s*\/?>/g, '')}</p>` : '';
+
+          const cardHtml = `
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+              <div class="administration-card">
+                <img src="${member.photo_path}" alt="Фото ${member.name}" class="administration-image">
+                <div class="card-content">
+                  <h5 class="administration-name">${member.name}</h5>
+                  <p class="administration-position">${member.position}</p>
+                  ${detailsHtml}
+                </div>
+              </div>
+            </div>
+          `;
+          administrationContainer.innerHTML += cardHtml;
+        });
+      })
+      .catch(error => {
+        console.error('Fetch error:', error);
+        loadingMessage.remove();
+        administrationContainer.innerHTML = '<div class="text-center text-white">Не вдалося завантажити дані. Спробуйте пізніше.</div>';
+      });
+  });
+</script>
 {% endblock %}

@@ -1,0 +1,39 @@
+[
+  {
+    "name": "Гикава Ольга Дмитрівна",
+    "position": "Директор ліцею",
+    "photo_path": "https://via.placeholder.com/200x200/cccccc/ffffff?text=Фото"
+  },
+  {
+    "name": "Гонтар Галина Петрівна",
+    "position": "Заступник директора з освітнього процесу",
+    "photo_path": "https://via.placeholder.com/200x200/cccccc/ffffff?text=Фото"
+  },
+  {
+    "name": "Войтова Тетяна Вікторівна",
+    "position": "Заступник директора з освітнього процесу",
+    "photo_path": "https://via.placeholder.com/200x200/cccccc/ffffff?text=Фото"
+  },
+  {
+    "name": "Паламарчук Тетяна Валентинівна",
+    "position": "Педагог організатор",
+    "photo_path": "https://via.placeholder.com/200x200/cccccc/ffffff?text=Фото"
+  },
+  {
+    "name": "Сухая Вікторія Юріївна",
+    "position": "Заступник директора з виховної роботи",
+    "photo_path": "https://via.placeholder.com/200x200/cccccc/ffffff?text=Фото"
+  },
+  {
+    "name": "Левчук С.В.",
+    "position": "Бібліотекар",
+    "details": "Категорія: вища. Стаж: 33 роки",
+    "photo_path": "https://via.placeholder.com/200x200/cccccc/ffffff?text=Фото"
+  },
+  {
+    "name": "Волицька О.І.",
+    "position": "Заступник директора з господарчої частини",
+    "details": "Стаж: 42 роки",
+    "photo_path": "https://via.placeholder.com/200x200/cccccc/ffffff?text=Фото"
+  }
+]

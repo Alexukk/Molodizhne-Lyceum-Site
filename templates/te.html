@@ -1,169 +1,148 @@
-{% extends 'base.html' %} {% block title %}Молодіжненський ліцей - Вчителі{%
-endblock %} {% block head_extra %}
+{% extends 'base.html' %}
+
+{% block title %}Викладачі - Молодіжненський ліцей{% endblock %}
+
+{% block head_extra %}
+<link
+  href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap"
+  rel="stylesheet"
+/>
 <style>
-  /* Стилі для загальних контейнерів, если не в styles.css */
-  .main-content {
-    flex-grow: 1;
-    padding-top: 50px; /* Отступ сверху, чтобы не перекрывалось навигацией */
+  /* Додаємо overflow-x: hidden, щоб запобігти появі горизонтального скролбару */
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Загальні стилі для сторінки */
+  .teachers-page-wrapper {
+    padding-top: 50px;
     padding-bottom: 50px;
+    font-family: "Open Sans", sans-serif;
   }
 
-  .hero-section {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-
-  .hero-section h1 {
-    font-family: "Montserrat", sans-serif; /* Предполагается, что Montserrat есть в base.html или styles.css */
+  .teachers-main-title {
+    font-family: "Montserrat", sans-serif;
     font-weight: 700;
-    color: #ffda00; /* Желтый цвет */
+    color: #ffda00;
+    text-align: center;
+    margin-bottom: 20px;
     font-size: 3rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    margin-bottom: 10px;
   }
 
-  .underline {
+  .teachers-title-underline {
     width: 100px;
     height: 5px;
     background-color: #ffda00;
-    margin: 0 auto 0px; /* Отступ под заголовком */
+    margin: 0 auto 50px;
     border: none;
-    border-radius: 3px;
   }
 
-  .warning-message {
-    background-color: rgba(255, 255, 0, 0.8); /* Желтый фон с прозрачностью */
-    color: #333; /* Темный текст */
-    padding: 10px 20px;
-    border-radius: 8px;
-    margin-top: 20px;
-    font-weight: 600;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    display: inline-block; /* Для центрирования и оборачивания по контенту */
-  }
-
-  /* Стилі для карточок вчителів (общие, без данных) */
+  /* Стилі для карток вчителів */
   .teacher-card {
-    background-color: rgba(0, 0, 0, 0.6); /* Темный полупрозрачный фон */
+    background-color: rgba(0, 0, 0, 0.7);
     color: #fff;
-    border: 2px solid #00bcd4; /* Голубая рамка */
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 30px; /* Отступ между карточками */
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border: 2px solid #ffda00;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 100%; /* Гарантируем одинаковую высоту в flex-контейнере */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .teacher-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+  }
+
+  .teacher-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-bottom: 2px solid #ffda00;
+  }
+
+  .card-content {
+    padding: 20px;
+    text-align: center;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
 
-  .teacher-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-  }
-
-  .teacher-card img {
-    width: 120px; /* Размер фото учителя */
-    height: 120px;
-    border-radius: 50%; /* Круглое фото */
-    object-fit: cover;
-    border: 3px solid #ffda00; /* Желтая рамка вокруг фото */
-    margin-bottom: 15px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  }
-
-  .teacher-card h3 {
+  .teacher-name {
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
-    color: #ffda00; /* Желтый цвет для имени */
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-  }
-
-  .teacher-card p {
-    font-size: 1rem;
-    line-height: 1.5;
+    font-size: 1.8rem;
+    color: #ffda00;
     margin-bottom: 5px;
   }
 
-  .teacher-card .subject {
-    color: #00bcd4; /* Голубой цвет для предмета */
-    font-weight: 600;
-  }
-
-  .teacher-card .experience {
-    font-style: italic;
-    font-size: 0.95rem;
-    color: rgba(255, 255, 255, 0.8);
-  }
-
-  /* Адаптивность для колонок */
-  @media (min-width: 992px) {
-    /* 4 колонки на больших экранах */
-    .teacher-col {
-      flex: 0 0 25%;
-      max-width: 25%;
-    }
-  }
-
-  @media (min-width: 768px) and (max-width: 991.98px) {
-    /* 2 колонки на средних экранах */
-    .teacher-col {
-      flex: 0 0 50%;
-      max-width: 50%;
-    }
-  }
-
-  @media (max-width: 767.98px) {
-    /* 1 колонка на мобильных */
-    .teacher-col {
-      flex: 0 0 100%;
-      max-width: 100%;
-    }
-    .teacher-card {
-      padding: 15px;
-    }
-    .teacher-card img {
-      width: 100px;
-      height: 100px;
-    }
-    .teacher-card h3 {
-      font-size: 1.3rem;
-    }
-    .teacher-card p {
-      font-size: 0.95rem;
-    }
+  .teacher-subject {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 0;
   }
 </style>
-{% endblock %} {% block content %}
-<main class="main-content">
-  <header class="hero-section">
-    <h1>Вчителі</h1>
-    <div class="underline"></div>
-  </header>
+{% endblock %}
 
-  <section class="section-bg py-4">
-    <div class="container text-center">
-      <div class="warning-message">
-        <p>! Увага: Дані актуальні на весну 2024 року !</p>
-      </div>
+{% block content %}
+<main class="teachers-page-wrapper">
+  <div class="container">
+    <h1 class="teachers-main-title">Наші викладачі</h1>
+    <hr class="teachers-title-underline" />
+    <div id="teachers-container" class="row g-4 justify-content-center">
+      <div id="loading-message" class="text-center text-white">Завантаження...</div>
     </div>
-  </section>
-
-  <section class="section-bg pt-0 pb-5">
-    <div class="container">
-      <div id="teachers-container" class="row justify-content-center">
-        <div class="text-center w-100 p-5 text-white-50">
-          <p>
-            Натисніть F12, перейдіть на вкладку Console і введіть
-            `loadTeachers()` для завантаження вчителів.
-          </p>
-          <p>(Или просто ожидайте интеграции с бэкендом/JS)</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  </div>
 </main>
-{% endblock %} {% block scripts %} {% endblock %}
+{% endblock %}
+
+{% block script_extra %}
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const teachersContainer = document.getElementById('teachers-container');
+    const loadingMessage = document.getElementById('loading-message');
+
+    fetch('/get-teachers')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(teachers => {
+        loadingMessage.remove();
+
+        if (teachers === 0 || !Array.isArray(teachers) || teachers.length === 0) {
+          teachersContainer.innerHTML = '<div class="text-center text-white">Дані про викладачів відсутні.</div>';
+          return;
+        }
+
+        teachers.forEach(teacher => {
+          const cardHtml = `
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+              <div class="teacher-card">
+                <img src="${teacher.photo_path}" alt="Фото ${teacher.name}" class="teacher-image">
+                <div class="card-content">
+                  <h5 class="teacher-name">${teacher.name}</h5>
+                  <p class="teacher-subject">${teacher.subject}</p>
+                </div>
+              </div>
+            </div>
+          `;
+          teachersContainer.innerHTML += cardHtml;
+        });
+      })
+      .catch(error => {
+        console.error('Fetch error:', error);
+        loadingMessage.remove();
+        teachersContainer.innerHTML = '<div class="text-center text-white">Не вдалося завантажити дані. Спробуйте пізніше.</div>';
+      });
+  });
+</script>
+{% endblock %}
