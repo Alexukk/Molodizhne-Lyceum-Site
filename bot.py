@@ -317,7 +317,14 @@ def confirm_high(message):
     text = scedule_updater(message.text, 'High')
     bot.send_message(message.chat.id, text, reply_markup=menu)
 
+def start_admin_bot():
+    while True:
+        try:
+            bot.polling(none_stop=True, interval=0)
+        except Exception as e:
+            logging.exception("❌ Бот упал с ошибкой:")
+            time.sleep(5)
 
-if __name__ == '__main__':
-    logger.info("Bot started polling...")
-    bot.polling(none_stop=True)
+#if __name__ == '__main__':
+#    logger.info("Bot started polling...")
+#    bot.polling(none_stop=True)
