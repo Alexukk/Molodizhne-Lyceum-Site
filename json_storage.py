@@ -115,7 +115,7 @@ def save_post(post_data: dict) -> bool:
             return False
 
 
-# --- НОВАЯ ФУНКЦИЯ ДЛЯ УДАЛЕНИЯ ПОСТА ПО ID ---
+
 def delete_post_by_id(post_id: str) -> bool:
 
     main_lock = FileLock(POSTS_LOCK_FILE_PATH, timeout=10)
