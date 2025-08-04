@@ -1,3 +1,4 @@
+import json
 import time
 import telebot
 import os
@@ -148,10 +149,33 @@ def PublishPost(message):
         return
 
     try:
+        data = {
+            'title': Post['title'],
+            'id': Post['id'],
+            'text': Post['text'],
+            'Date': Post['Date']
+        }
+
+        path = os.path.join(os.path.dirname(__file__), "posts_for_bot.json")
+
+        try:
+            if os.path.exists(path):
+                with open(path, "r", encoding='utf8') as file:
+                    posts = json.load(file)
+            else:
+                posts = []
+        except Exception:
+            posts = []
+
+        posts.append(data)
+
+        with open(path, "w", encoding='utf8') as file:
+            json.dump(posts, file, ensure_ascii=False, indent=2)
+
         response = requests.post(
             'https://molodizhne-lyceum-site.onrender.com/update-posts',
             json=Post,
-            timeout=10
+            timeout=30
         )
         if response.status_code == 200:
             bot.send_message(user_id, "✅ Пост успішно опубліковано!", reply_markup=menu)
@@ -159,7 +183,7 @@ def PublishPost(message):
         else:
             bot.send_message(user_id, f"❌ Помилка: сервер відповів {response.status_code}", reply_markup=menu)
     except Exception as e:
-        bot.send_message(user_id, f"⚠️ Помилка при надсиланні поста: {e}", reply_markup=menu)
+        bot.send_message(user_id, f"⚠️ Помилка при надсиланні поста: {e}\n Спробуйте знову через 30 секунд, сервер прокидається", reply_markup=menu)
 
 
 @bot.message_handler(commands=['DeletePost'])
@@ -172,14 +196,58 @@ def show_posts_for_deletion(message):
     bot.register_next_step_handler(message, posts_deleter)
 
 
-@bot.message_handler(func=lambda message: message.text == 'DELETE_POST')
-def DELETE_POST_command_handler(message):
+@bot.message_handler(commands=['AllPosts'])
+def all_posts(message):
+    user_id = message.chat.id
+    try:
+        with open("posts_for_bot.json", "r", encoding="utf8") as f:
+            posts = json.load(f)
+        if not posts:
+            bot.send_message(user_id, "Пости відсутні.", reply_markup=menu)
+            return
+    except Exception as e:
+        bot.send_message(user_id, f"Помилка читання постів: {e}", reply_markup=menu)
+        return
+
+    for post in posts:
+        text = (
+            f"<b>{post.get('title', 'Без назви')}</b>\n"
+            f"{post.get('text', '')}\n"
+            f"{post.get('Date', '')}\n"
+            f"<code>{post.get('id', '')}</code>"
+        )
+        bot.send_message(user_id, text, parse_mode='HTML')
+
+
+
+
+@bot.message_handler(commands=['DeletePost'])
+def delete_post_command(message):
     user_id = message.chat.id
     if not checker(user_id):
         return
+    try:
+        with open("posts_for_bot.json", "r", encoding="utf8") as f:
+            posts = json.load(f)
+        if not posts:
+            bot.send_message(user_id, "Пости відсутні.", reply_markup=menu)
+            return
+    except Exception as e:
+        bot.send_message(user_id, f"Помилка читання постів: {e}", reply_markup=menu)
+        return
+    global text
+    for post in posts:
+        text = (
+            f"<b>{post.get('title', 'Без назви')}</b>\n"
+            f"{post.get('text', '')}\n"
+            f"{post.get('Date', '')}\n"
+            f"<code>{post.get('id', '')}</code>"
+        )
+    bot.send_message(user_id, text, parse_mode='HTML')
 
-    bot.send_message(user_id, "Введіть ID поста для видалення:", reply_markup=delete_management_menu)
+    bot.send_message(user_id, f"Введіть ID поста для видалення: {text}", reply_markup=delete_management_menu)
     bot.register_next_step_handler(message, posts_deleter)
+
 
 
 def posts_deleter(message):
@@ -200,6 +268,15 @@ def posts_deleter(message):
             timeout=10
         )
         if response.status_code == 200:
+            path = os.path.join(os.path.dirname(__file__), "posts_for_bot.json")
+            if os.path.exists(path):
+                with open(path, 'r', encoding='utf-8') as file:
+                    data = json.load(file)
+                # Фильтруем посты, убирая удалённый
+                data = [post for post in data if post.get("id") != post_id_to_delete]
+                with open(path, 'w', encoding='utf-8') as file:
+                    json.dump(data, file, ensure_ascii=False, indent=2)
+
             bot.send_message(
                 user_id,
                 f"✅ Пост з ID <code>{post_id_to_delete}</code> успішно видалено.",
@@ -210,7 +287,7 @@ def posts_deleter(message):
             bot.send_message(
                 user_id,
                 f"❌ Сервер не зміг видалити пост з ID <code>{post_id_to_delete}</code>.",
-                reply_markup=delete_management_menu,
+                reply_markup=menu,
                 parse_mode='HTML'
             )
             bot.register_next_step_handler(message, posts_deleter)
@@ -218,9 +295,10 @@ def posts_deleter(message):
         bot.send_message(
             user_id,
             f"⚠️ Помилка при спробі видалення поста: {e}",
-            reply_markup=delete_management_menu
+            reply_markup=menu
         )
         bot.register_next_step_handler(message, posts_deleter)
+
 
 
 @bot.message_handler(func=lambda message: message.text == 'Exit')
