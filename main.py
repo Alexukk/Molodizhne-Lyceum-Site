@@ -1,12 +1,25 @@
-from flask import Flask, render_template, jsonify, request
+import os
+
+from flask import Flask, render_template, jsonify, request, redirect, url_for
 from dotenv import load_dotenv
-from json_storage import load_posts
-from scedule_updater import scedule_reader
+from flask_sqlalchemy import SQLAlchemy
 from teachers import teachers_reader, administration_reader
-from json_storage import save_post, delete_post_by_id
+from datetime import datetime
 
 load_dotenv()
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///Site_data.db'
+db = SQLAlchemy(app)
+
+
+class Posts(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(300), nullable=False)
+    text = db.Column(db.Text, nullable=False)
+    date = db.Column(db.DateTime, default=datetime.now)
+
+    def __repr__(self):
+        return '<Article %r>' % self.id
 
 @app.route('/')
 def index():
@@ -20,52 +33,86 @@ def contact():
 def info():
     return render_template('info.html')
 
-@app.route('/update-posts', methods=['POST'])
-def posts_updater():
-    data = request.get_json()
-    if not data:
-        return jsonify({"error": "No JSON received"}), 400
 
-    if data.get("title") == "DELETE":
-        post_id = data.get("id")
-        if not post_id:
-            return jsonify({"error": "No post id for deletion"}), 400
+@app.route('/create-post', methods=['POST', 'GET'])
+def create_post():
+    if request.method == 'POST':
+        title = request.form.get('title')
+        text = request.form.get('content')
+        passw = request.form.get('password')
+
+        if not title or not text:
+
+            return "Будь ласка, заповніть усі поля.", 400
+        if passw != os.getenv('POST_PASS'):
+            return redirect('/')
+
+        article = Posts(title=title, text=text)
         try:
-            delete_post_by_id(post_id)
-            return jsonify({"success": "Post was deleted"}), 200
-        except Exception as e:
-            return jsonify({"error": str(e)}), 500
+            db.session.add(article)
+            db.session.commit()
+            return redirect('/posts')
+        except Exception:
+            return "Помилка при додаванні статті"
 
-    # Получаем поля для добавления/обновления поста
-    title = data.get("title")
-    post_id = data.get("id")
-    text = data.get("text")
-    date = data.get("Date")
+    return render_template('create_post.html')
 
-    if not all([title, post_id, text, date]):
-        return jsonify({"error": "Missing one or more required fields"}), 400
 
-    new_post = {
-        "title": title,
-        "id": post_id,
-        "Date": date,
-        "text": text
-    }
+@app.route('/delete-post', methods=['POST', 'GET'])
+def delete_post():
+    if request.method == 'POST':
+        # Отримуємо ID та пароль із форми
+        post_id = request.form.get('post_id')
+        passw = request.form.get('pass')
 
-    try:
-        save_post(new_post)
-        return jsonify({"success": "Post was added"}), 200
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        # Перевірка пароля
+        if passw != os.getenv('POST_PASS'):
+            return "Неправильний пароль!", 403
+
+        # Перевіряємо, чи існує ID і чи є він числом
+        try:
+            post_id = int(post_id)
+        except (ValueError, TypeError):
+            return "Некоректний ID поста.", 400
+
+        post_to_delete = Posts.query.get(post_id)
+
+        if post_to_delete:
+            try:
+                db.session.delete(post_to_delete)
+                db.session.commit()
+                return redirect(url_for('delete_post', success=True))
+            except Exception:
+                return "Помилка при видаленні статті.", 500
+        else:
+            return "Пост з таким ID не знайдено.", 404
+
+    return render_template('delete_post.html')
 
 @app.route('/posts')
 def posts():
     return render_template('desk.html')
 
+
 @app.route('/get-posts-data')
 def posts_sender():
-    data = load_posts()
-    return jsonify(data)
+    try:
+
+        all_posts = Posts.query.order_by(Posts.date.desc()).all()
+
+        posts_list = []
+        for post in all_posts:
+            posts_list.append({
+                'id': post.id,
+                'title': post.title,
+                'text': post.text,
+                'date': post.date.strftime("%Y-%m-%d")
+            })
+        return jsonify(posts_list)
+
+    except Exception as e:
+        print(f"Помилка при отриманні даних постів: {e}")
+        return jsonify({"error": "Внутрішня помилка сервера"}), 500
 
 @app.route('/administration')
 def admin():
@@ -89,8 +136,7 @@ def scedule():
 
 @app.route('/get-schedule')
 def get_scedule():
-    data = scedule_reader()
-    return jsonify(data)
+    return jsonify({'Data' : "No data yet"})
 
 @app.route('/shelter')
 def sport():
@@ -112,4 +158,6 @@ def teachers_returners():
 
 
 if __name__ == '__main__':
-    app.run(debug=False, use_reloader=False)  # 🔥 КРИТИЧЕСКО — иначе поток ломается!
+    with app.app_context():
+        db.create_all()
+    app.run(debug=False, use_reloader=False)

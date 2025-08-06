@@ -1,68 +1,58 @@
 const PostsGetter = () => {
-    // Используем console.log для отслеживания начала запроса
-    console.log("Запрос данных постов...");
+    console.log("Запит даних оголошень...");
 
     fetch("./get-posts-data")
         .then((response) => {
-            // Проверяем, успешен ли HTTP-ответ (статус 200-299)
             if (!response.ok) {
-                // Если нет, выбрасываем ошибку, которая будет поймана в .catch()
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            return response.json(); // Парсим ответ как JSON
+            return response.json();
         })
-        .then((data) => {
-            console.log("Данные постов получены:", data);
+        .then((posts) => {
+            console.log("Отримані дані оголошень:", posts);
 
-
-            if (!Array.isArray(data)) {
-                throw new Error("Полученные данные не являются массивом.");
+            if (!Array.isArray(posts)) {
+                throw new Error("Отримані дані не є масивом.");
             }
 
-            const reversedPosts = [...data].reverse();
+            // Ми отримаємо список постів з бази даних
             let post_PAGE = '';
 
-            reversedPosts.forEach(post => {
-                post_PAGE += `<article class="col-md-6 mb-4">
-                    <div class="card">
-                      <div class="card-body">
-                        <h5 class="card-title">${post.title || 'Без заголовка'}</h5>
-                        <p class="card-text">${post.text || 'Без текста'}</p>
-                        <hr>
-                        <p class="card-text text-muted">${post.Date || 'Дата не указана'}</p>
-                      </div>
+        posts.forEach(post => {
+            post_PAGE += `
+                <div class="col-md-6 mb-4">
+                    <div class="card bg-dark text-white border-warning">
+                        <div class="card-body">
+                            <h5 class="card-title text-warning">${post.title || 'Без заголовка'}</h5>
+                            <p class="card-text">${post.text || 'Без тексту'}</p>
+                            <hr>
+                            <p class="card-text text-muted">
+                                <small>ID: ${post.id} | Дата публікації: ${post.date || 'Дата не вказана'}</small>
+                            </p>
+                        </div>
                     </div>
-                  </article>`;
+                </div>`;
             });
-
 
             const postsContainer = document.getElementById('posts_code');
             if (postsContainer) {
                 postsContainer.innerHTML = post_PAGE;
             } else {
-                console.error("Элемент с ID 'posts_code' не найден.");
-
-                document.body.innerHTML = `<p style="color: red;">Ошибка: Контейнер для постов не найден на странице!</p>`;
+                console.error("Елемент з ID 'posts_code' не знайдено.");
             }
         })
         .catch((error) => {
-            console.error("Ошибка при получении постов:", error);
-
+            console.error("Помилка при отриманні оголошень:", error);
 
             const errorContainer = document.getElementById('posts_code');
             if (errorContainer) {
-                errorContainer.innerHTML = `<p style="color: red;">Не удалось загрузить посты с сервера. Пожалуйста, проверьте ваше соединение или свяжитесь с нами.</p>`;
+                errorContainer.innerHTML = `<p style="color: red;">Виникла помилка при завантаженні оголошень. Перевірте ваше підключення до інтернету.</p>`;
             } else {
-
-                document.body.innerHTML = `<p style="color: red;">Критическая ошибка: ${error.message}. Не удалось загрузить посты.</p>`;
+                document.body.innerHTML = `<p style="color: red;">Виникла критична помилка.</p>`;
             }
         });
 };
 
-// Запускаем PostsGetter после полной загрузки DOM
 window.onload = () => {
     PostsGetter();
 };
-
-// Алтернативный вариант запуска, который может быть лучше в современных проектах
-// document.addEventListener('DOMContentLoaded', PostsGetter);

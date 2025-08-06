@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block title %}Видалити оголошення{% endblock %}
+
+{% block head_extra %}
+<link
+  href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap"
+  rel="stylesheet"
+/>
+<style>
+    .delete-post-wrapper {
+        padding: 50px 20px;
+        font-family: "Open Sans", sans-serif;
+    }
+    .delete-post-title {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        color: #ffda00;
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 3rem;
+    }
+    .form-container {
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 30px;
+        border-radius: 15px;
+        border: 2px solid #ffda00;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    }
+    .form-control {
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid #ffda00;
+        color: #fff;
+        margin-bottom: 20px;
+        font-size: 1rem;
+    }
+    .form-control:focus {
+        background-color: rgba(255, 255, 255, 0.15);
+        color: #fff;
+        border-color: #ffda00;
+        box-shadow: 0 0 0 0.25rem rgba(255, 218, 0, 0.5);
+    }
+    label {
+        color: #fff;
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+    .btn-danger {
+        background-color: #dc3545;
+        border: 1px solid #dc3545;
+        color: #fff;
+        font-weight: 700;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .btn-danger:hover {
+        background-color: #c82333;
+        border-color: #bd2130;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<main class="delete-post-wrapper">
+    <div class="container">
+        <h1 class="delete-post-title">Видалити оголошення</h1>
+
+        {% if request.args.get('success') %}
+        <div class="alert alert-success" role="alert">
+            Оголошення успішно видалено!
+        </div>
+        {% endif %}
+
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="form-container">
+                    <form action="{{ url_for('delete_post') }}" method="post">
+                        <div class="form-group">
+                            <label for="post_id">ID оголошення для видалення</label>
+                            <input type="number" name="post_id" id="post_id" class="form-control" placeholder="Введіть ID" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pass">Пароль</label>
+                            <input type="password" name="pass" id="pass" class="form-control" placeholder="Введіть пароль" required>
+                        </div>
+                        <button type="submit" class="btn btn-danger w-100">Видалити оголошення</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
