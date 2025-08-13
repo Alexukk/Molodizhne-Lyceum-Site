@@ -1,10 +1,10 @@
 import os
-
 from flask import Flask, render_template, jsonify, request, redirect, url_for
 from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
 from teachers import teachers_reader, administration_reader
 from datetime import datetime
+import json
 
 load_dotenv()
 app = Flask(__name__)
@@ -135,8 +135,30 @@ def scedule():
     return render_template('scedule.html')
 
 @app.route('/get-schedule')
-def get_scedule():
-    return jsonify({'Data' : "No data yet"})
+def get_schedule():
+    try:
+        with open("./static/DB/Schedule.json", "r", encoding="utf8") as f:
+            data = json.load(f)
+
+        schedule_data = {
+            'High': data['High'],
+            'Elementary': data["Elementary"],
+            'Secondary': data["Secondary"]
+        }
+
+        # Фильтруем пустые значения, если переменная не установлена
+        schedule_data = {k: v for k, v in schedule_data.items() if v}
+
+        return jsonify(schedule_data)
+    except Exception as e:
+        # Возвращаем ошибку, если что-то пошло не так
+        return jsonify({"error": str(e)}), 500
+
+
+
+@app.route('/change-schedule', methods=['GET', 'POST'])
+def change_schedule():
+    return render_template('change_schedule.html')
 
 @app.route('/shelter')
 def sport():

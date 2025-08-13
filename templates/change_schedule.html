@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block title %}Змінити розклад{% endblock %}
+
+{% block head_extra %}
+<link
+  href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap"
+  rel="stylesheet"
+/>
+<style>
+    .schedule-wrapper {
+        padding: 50px 20px;
+        font-family: "Open Sans", sans-serif;
+    }
+    .schedule-title {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        color: #ffda00;
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 3rem;
+    }
+    .form-container {
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 30px;
+        border-radius: 15px;
+        border: 2px solid #ffda00;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    }
+    .form-control, .form-select {
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid #ffda00;
+        color: #fff;
+        margin-bottom: 20px;
+        font-size: 1rem;
+    }
+    .form-control:focus, .form-select:focus {
+        background-color: rgba(255, 255, 255, 0.15);
+        color: #fff;
+        border-color: #ffda00;
+        box-shadow: 0 0 0 0.25rem rgba(255, 218, 0, 0.5);
+    }
+    .form-select {
+        color: #fff;
+    }
+    .form-select option {
+        color: #000;
+        background-color: #fff;
+    }
+    label {
+        color: #fff;
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+    .btn-save {
+        background-color: #28a745;
+        border: 1px solid #28a745;
+        color: #fff;
+        font-weight: 700;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .btn-save:hover {
+        background-color: #218838;
+        border-color: #1e7e34;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<main class="schedule-wrapper">
+    <div class="container">
+        <h1 class="schedule-title">Змінити розклад</h1>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="form-container">
+                    <form action="{{ url_for('change_schedule') }}" method="post">
+                        <div class="form-group">
+                            <label for="school_type">Рівень</label>
+                            <select name="school_type" id="school_type" class="form-control form-select" required>
+                                <option value="Elementary">Початкова школа</option>
+                                <option value="Secondary">Середня школа</option>
+                                <option value="High">Старша школа</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="url">Посилання на розклад</label>
+                            <input type="url" name="url" id="url" class="form-control" placeholder="Введіть посилання" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Пароль</label>
+                            <input type="password" name="password" id="password" class="form-control" placeholder="Введіть пароль" required>
+                        </div>
+                        <button type="submit" class="btn btn-save w-100">Зберегти</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

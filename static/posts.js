@@ -1,7 +1,7 @@
 const PostsGetter = () => {
     console.log("Запит даних оголошень...");
 
-    fetch("./get-posts-data")
+    fetch("/get-posts-data")
         .then((response) => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
