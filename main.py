@@ -146,19 +146,41 @@ def get_schedule():
             'Secondary': data["Secondary"]
         }
 
-        # Фильтруем пустые значения, если переменная не установлена
         schedule_data = {k: v for k, v in schedule_data.items() if v}
 
         return jsonify(schedule_data)
     except Exception as e:
-        # Возвращаем ошибку, если что-то пошло не так
         return jsonify({"error": str(e)}), 500
 
 
 
-@app.route('/change-schedule', methods=['GET', 'POST'])
+@app.route('/change-schedule', methods=['POST', 'GET'])
 def change_schedule():
-    return render_template('change_schedule.html')
+    if request.method == 'GET':
+        return render_template('change_schedule.html')
+
+    school_type = request.form.get('school_type')
+    password = request.form.get('password')
+    url = request.form.get('url')
+
+    if not url or not password or not school_type:
+        return "Помилка! Невистачає одного з компонентів", 400
+
+    if password != os.getenv('POST_PASS'):
+        return redirect('/')
+
+    try:
+        with open('./static/DB/Schedule.json', 'r', encoding='utf8') as f:
+            data = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        data = {}
+
+    data[school_type] = url
+
+    with open('./static/DB/Schedule.json', 'w', encoding='utf8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+
+    return render_template('change_schedule.html', message="Розклад успішно оновлено!")
 
 @app.route('/shelter')
 def sport():
